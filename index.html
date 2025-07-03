@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>denTallo - Professional Dental Care Services</title>
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description"
+		content="Professional dental care services at denTallo. Expert orthodontic treatments, teeth whitening, and comprehensive dental care." />
+	<meta name="keywords" content="dental care, orthodontics, teeth whitening, dental clinic, denTallo" />
+
+	<!-- Preload critical resources -->
+	<link rel="preload" href="css/bootstrap.css" as="style">
+	<link rel="preload" href="css/style.css" as="style">
+	<link rel="preload" href="images/banner.png" as="image">
+
+	<!-- Preconnect to external domains -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<script>
+		// Optimized URL bar hiding
+		window.addEventListener("load", function () {
+			setTimeout(function () {
+				window.scrollTo(0, 1);
+			}, 100);
+		}, false);
+	</script>
+
+	<!-- css files - optimized loading -->
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/css_slider.css" type="text/css" rel="stylesheet" media="all">
+	<link href="css/performance.css" rel="stylesheet">
+
+	<!-- google fonts - optimized -->
+	<link
+		href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&family=Dosis:wght@200;300;400;500;600;700;800&display=swap"
+		rel="stylesheet">
+
+	<!-- Performance optimization script -->
+	<script>
+		// Lazy loading for images
+		document.addEventListener("DOMContentLoaded", function () {
+			var lazyImages = [].slice.call(document.querySelectorAll("img[data-src]"));
+
+			if ("IntersectionObserver" in window) {
+				let lazyImageObserver = new IntersectionObserver(function (entries, observer) {
+					entries.forEach(function (entry) {
+						if (entry.isIntersecting) {
+							let lazyImage = entry.target;
+							lazyImage.src = lazyImage.dataset.src;
+							lazyImage.classList.remove("lazy");
+							lazyImageObserver.unobserve(lazyImage);
+						}
+					});
+				});
+
+				lazyImages.forEach(function (lazyImage) {
+					lazyImageObserver.observe(lazyImage);
+				});
+			}
+		});
+
+		// Preload next page on hover
+		function preloadPage(url) {
+			var link = document.createElement('link');
+			link.rel = 'prefetch';
+			link.href = url;
+			document.head.appendChild(link);
+		}
+
+		// Add preload on navigation hover
+		document.addEventListener('DOMContentLoaded', function () {
+			var navLinks = document.querySelectorAll('nav a[href]');
+			navLinks.forEach(function (link) {
+				link.addEventListener('mouseenter', function () {
+					preloadPage(this.href);
+				});
+			});
+		});
+	</script>
+
+	<!-- Firebase App (the core Firebase SDK) -->
+	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+	<!-- Firebase Analytics -->
+	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+	<script>
+		// Your web app's Firebase configuration
+		const firebaseConfig = {
+			apiKey: "AIzaSyD_FYW1O-iFXXTfd4fgYmLi6G1lhAaK_B8",
+			authDomain: "dentello-bf49a.firebaseapp.com",
+			projectId: "dentello-bf49a",
+			storageBucket: "dentello-bf49a.appspot.com",
+			messagingSenderId: "209346364277",
+			appId: "1:209346364277:web:a0cd05825d193bb85d093c",
+			measurementId: "G-DERY2TQFE4"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		if (firebase.analytics) {
+			firebase.analytics();
+		}
+	</script>
+	<!-- End Firebase -->
+
+</head>
+
+<body>
+
+	<!-- top header -->
+	<div class="header-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<ul class="d-lg-flex header-w3_pvt">
+						<li class="mr-lg-3">
+							<span class="fa fa-envelope-open"></span>
+							<a href="mailto:info@example.com" class="">info@dentallo.com.bd</a>
+						</li>
+						<li>
+							<span class="fa fa-phone"></span>
+							<p class="d-inline">Call Us +12 345 678</p>
+						</li>
+					</ul>
+				</div>
+				<div class="col-sm-6 header-right-w3_pvt">
+					<ul class="d-lg-flex header-w3_pvt justify-content-lg-end">
+						<li class="mr-lg-3">
+							<span class=""><span class="fa fa-clock-o"></span>Mon - Fri : 8:30am to 9:30pm</span>
+						</li>
+						<li class="">
+							<span class=""><span class="fa fa-clock-o"></span>Sat & Sun : 9:00am to 6:00pm</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //top header -->
+
+	<!-- //header -->
+	<header class="py-3">
+		<div class="container">
+			<div id="logo">
+				<h1> <a href="index.html"><span class="fa fa-stethoscope" aria-hidden="true"></span>denTallo</a></h1>
+			</div>
+			<!-- nav -->
+			<nav class="d-lg-flex">
+
+				<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+				<input type="checkbox" id="drop" />
+				<ul class="menu mt-2 ml-auto">
+					<li class="active"><a href="index.html">Home</a></li>
+					<li class=""><a href="about.html">About Us</a></li>
+					<li class=""><a href="services.html">Services</a></li>
+					<li class=""><a href="gallery.html">Gallery</a></li>
+					<li class=""><a href="blog.html">Blog</a></li>
+					<li class=""><a href="contact.html">contact </a></li>
+
+				</ul>
+				<div class="login-icon ml-2">
+					<a class="user" href="login.html"> Login</a>
+
+				</div>
+			</nav>
+			<div class="clear"></div>
+			<!-- //nav -->
+			<button id="sendOtpBtn" class="btn btn-primary" style="float:right; margin: 10px;">Send OTPs Email</button>
+		</div>
+	</header>
+	<!-- //header -->
+
+	<!-- banner -->
+	<div class="banner" id="home">
+		<div class="layer">
+			<div class="container">
+				<div class="banner-text-agile">
+					<div class="row">
+						<div class="col-lg-6 p-0">
+							<!-- banner slider-->
+							<div class="csslider infinity" id="slider1">
+								<input type="radio" name="slides" checked="checked" id="slides_1" />
+								<input type="radio" name="slides" id="slides_2" />
+								<input type="radio" name="slides" id="slides_3" />
+								<ul class="banner_slide_bg">
+									<li>
+										<div class="container-fluid">
+											<div class="w3ls_banner_txt">
+												<h3 class="b-w3ltxt text-capitalize mt-md-4"><span>Quality Orthodontic
+													</span> Treatments</h3>
+												<p class="w3ls_pvt-title my-3">Experience exceptional dental care with
+													our expert team. Your healthy, beautiful smile is our top priority.
+												</p>
+												<a href="about.html" class="btn btn-banner my-sm-3 mb-3">Read More</a>
+												<a href="contact.html" class="btn btn-banner1 my-sm-3 mb-3">Consult a
+													dentist</a>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="container-fluid">
+											<div class="w3ls_banner_txt">
+												<h3 class="b-w3ltxt text-capitalize mt-md-4"><span>We care about
+														your</span> Teeth</h3>
+												<p class="w3ls_pvt-title my-3">We are dedicated to providing gentle,
+													personalized care to keep your teeth healthy and your smile bright.
+												</p>
+												<a href="about.html" class="btn btn-banner my-sm-3 mb-3">Read More</a>
+												<a href="contact.html" class="btn btn-banner1 my-sm-3 mb-3">Consult a
+													dentist</a>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="container-fluid">
+											<div class="w3ls_banner_txt">
+												<h3 class="b-w3ltxt text-capitalize mt-md-4"><span>Professionally
+														Trained</span> Dental Staff.</h3>
+												<p class="w3ls_pvt-title my-3">Our skilled dental professionals are
+													committed to delivering the highest standard of care for every
+													patient.</p>
+												<a href="about.html" class="btn btn-banner my-sm-3 mb-3">Read More</a>
+												<a href="contact.html" class="btn btn-banner1 my-sm-3 mb-3">Consult a
+													dentist</a>
+											</div>
+										</div>
+									</li>
+								</ul>
+								<div class="navigation">
+									<div>
+										<label for="slides_1"></label>
+										<label for="slides_2"></label>
+										<label for="slides_3"></label>
+									</div>
+								</div>
+							</div>
+							<!-- //banner slider-->
+
+						</div>
+						<div class="col-lg-6 col-md-8">
+							<img src="images/banner.png" alt="Dental Care Services" class="img-fluid" loading="eager" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //banner -->
+
+	<!-- about -->
+	<section class="about py-5">
+		<div class="container py-md-3">
+			<h2 class="heading text-center mb-sm-5 mb-4">About Us </h2>
+			<div class="row">
+				<div class="col-lg-8">
+					<h4 class="about-left">Be Gentle With The Strongest!</h4>
+					<p class="mt-sm-4 mt-3">At our clinic, we believe that even the strongest teeth deserve the gentlest
+						care. Our approach combines advanced dental techniques with a compassionate touch, ensuring your
+						comfort and long-term oral health.</p>
+					<div class="row mt-4">
+						<div class="col-md-3 col-6">
+							<div class="about-box">
+								<span class="icon">
+									<span class="fa fa-birthday-cake"></span>
+								</span>
+								<h4>Root Canals</h4>
+							</div>
+						</div>
+						<div class="col-md-3 col-6">
+							<div class="about-box">
+								<span class="icon">
+									<span class="fa fa-rocket"></span>
+								</span>
+								<h4>Teeth Whitening</h4>
+							</div>
+						</div>
+						<!-- .about-box ends here -->
+						<div class="col-md-3 col-6 mt-md-0 mt-4">
+							<div class="about-box">
+								<span class="icon">
+									<span class="fa fa-stethoscope"></span>
+								</span>
+								<h4>Check-ups</h4>
+							</div>
+						</div>
+						<div class="col-md-3 col-6 mt-md-0 mt-4">
+							<div class="about-box">
+								<span class="icon">
+									<span class="fa fa-coffee"></span>
+								</span>
+								<h4>Dental Exams</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-8 dental">
+					<img src="images/tooth.png" class="img-fluid" alt="" />
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- //about -->
+
+	<!-- about bottom -->
+	<section class="about-bottom pb-5">
+		<div class="container pb-lg-3">
+			<div class="row bottom-grids">
+				<div class="col-lg-6">
+					<img src="images/about.jpg" class="img-fluid" alt="" />
+				</div>
+				<div class="col-lg-6 mt-lg-0 mt-5">
+					<h4>Routine Dental Exams and Check ups at 1000 Tk</h4>
+					<p class="py-3">Regular dental exams and check-ups are essential for maintaining optimal oral
+						health. For just 1000 Tk, our experienced team will thoroughly assess your teeth and gums,
+						provide professional cleaning, and offer personalized advice to keep your smile healthy and
+						bright.</p>
+					<p class="">Book your contact today and invest in your dental well-being!</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- //about bottom -->
+
+	<!-- services -->
+	<section class="services py-5">
+		<div class="container py-lg-5">
+			<h3 class="heading text-center mb-sm-5 mb-4">What we do </h3>
+			<div class="row offer-grids">
+				<div class="col-lg-4 col-md-6">
+					<div class="ser1">
+						<div class="bg-layer border h-100 p-3">
+							<h4>Root Canal & Teeth Whitening</h4>
+							<p class="mt-3">At denTallo, we offer both advanced root canal treatments and professional
+								teeth whitening to restore your oral health and enhance your smile. Our gentle root
+								canal procedures relieve pain and save your natural tooth, while our safe whitening
+								solutions remove stains for a brighter, more confident you—all in a comfortable, caring
+								environment.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="ser2">
+						<div class="bg-layer border h-100 p-3">
+							<h4>Dental Implants</h4>
+							<p class="mt-3">Restore missing teeth with durable, natural-looking dental implants for
+								improved function and aesthetics.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="ser3">
+						<div class="bg-layer border h-100 p-3">
+							<h4>Dental Implants</h4>
+							<p class="mt-3">Restore missing teeth with durable, natural-looking dental implants for
+								improved function and aesthetics.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row offer-grids mt-4">
+				<div class="col-lg-4 col-md-6">
+					<div class="ser4">
+						<div class="bg-layer border h-100 p-3">
+							<h4>Braces & Orthodontics</h4>
+							<p class="mt-3">Achieve a straighter, healthier smile with our comprehensive orthodontic
+								treatments for children and adults.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="ser5">
+						<div class="bg-layer border h-100 p-3">
+							<h4>Tooth Extraction</h4>
+							<p class="mt-3">Gentle and safe tooth extractions to address pain, infection, or
+								overcrowding, always prioritizing your comfort.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="ser6">
+						<div class="bg-layer border h-100 p-3">
+							<h4>Dental Crowns & Bridges</h4>
+							<p class="mt-3">Protect and restore damaged or missing teeth with custom crowns and bridges
+								for a seamless smile.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row offer-grids mt-4">
+				<div class="col-lg-4 col-md-6">
+					<div class="ser7">
+						<div class="bg-layer border h-100 p-3">
+							<h4>Pediatric Dentistry</h4>
+							<p class="mt-3">Gentle dental care for children, ensuring healthy smiles and positive dental
+								experiences from an early age.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="ser8">
+						<div class="bg-layer border h-100 p-3">
+							<h4>Gum Disease Treatment</h4>
+							<p class="mt-3">Prevent, diagnose, and treat gum disease to maintain strong teeth and
+								healthy gums for life.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="ser9">
+						<div class="bg-layer border h-100 p-3">
+							<h4>Cosmetic Dentistry</h4>
+							<p class="mt-3">Enhance your smile's appearance with veneers, bonding, and other cosmetic
+								dental solutions tailored to you.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row offer-grids mt-4">
+				<div class="col-lg-4 col-md-6">
+					<div class="ser10">
+						<div class="bg-layer border h-100 p-3">
+							<h4>Dental Fillings</h4>
+							<p class="mt-3">Repair cavities and restore tooth structure with durable, tooth-colored
+								fillings for a natural look.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="ser11">
+						<div class="bg-layer border h-100 p-3">
+							<h4>Oral Cancer Screening</h4>
+							<p class="mt-3">Early detection saves lives—our thorough oral cancer screenings help ensure
+								your ongoing health and peace of mind.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="ser12">
+						<div class="bg-layer border h-100 p-3">
+							<h4>Emergency Dental Care</h4>
+							<p class="mt-3">Prompt, compassionate care for dental emergencies—relief when you need it
+								most, any time.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- //services -->
+
+	<!-- testimonials -->
+	<section class="feedback" id="testimonials">
+		<div class="feedback-layer py-5">
+			<div class="container py-lg-5">
+				<h3 class="heading text-center mb-sm-5 mb-4">Testimonials</h3>
+				<div class="row">
+					<div class="col-lg-4 col-md-6">
+						<div class="feedback-info">
+							<div class="feedback-top p-4">
+								<span class="fa fa-quote-right"></span>
+								<p>The staff was incredibly friendly and made me feel at ease throughout my entire
+									visit. My dental procedure was painless and the results were fantastic. Highly
+									recommended!</p>
+								<div class="clearfix"></div>
+							</div>
+							<div class="feedback-grids">
+								<div class="feedback-img">
+									<img src="images/ser1.jpg" class="img-fluid" alt="">
+								</div>
+								<div class="feedback-img-info">
+									<h5>Mary Jane</h5>
+									<p class="font-italic">- April 10, 2024.</p>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 mt-md-0 mt-5">
+						<div class="feedback-info">
+							<div class="feedback-top p-4">
+								<span class="fa fa-quote-right"></span>
+								<p>I brought my child here for a check-up and was impressed by how gentle and patient
+									the dentist was. The clinic is clean, modern, and truly cares about its patients.
+								</p>
+								<div class="clearfix"></div>
+							</div>
+							<div class="feedback-grids">
+								<div class="feedback-img">
+									<img src="images/ser2.jpg" class="img-fluid" alt="">
+								</div>
+								<div class="feedback-img-info">
+									<h5>Mary Jane</h5>
+									<p class="font-italic">- April 5, 2024.</p>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 mt-lg-0 mt-5">
+						<div class="feedback-info">
+							<div class="feedback-top p-4">
+								<span class="fa fa-quote-right"></span>
+								<p>When I had a dental emergency, they fit me in right away and took great care of me.
+									I'm grateful for their professionalism and compassion.</p>
+								<div class="clearfix"></div>
+							</div>
+							<div class="feedback-grids">
+								<div class="feedback-img">
+									<img src="images/ser3.jpg" class="img-fluid" alt="">
+								</div>
+								<div class="feedback-img-info">
+									<h5>Mary Jane</h5>
+									<p class="font-italic">- March 28, 2024.</p>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- //testimonials -->
+
+	<!-- dental news -->
+	<section class="dental-news py-5">
+		<div class="container py-md-5 py-3">
+			<h3 class="heading text-center mb-sm-5 mb-4">Dental Blogs</h3>
+			<div class="row blog-grids">
+				<div class="col-lg-7 mb-lg-5 blog-img1">
+					<img src="images/blog1.jpg" alt="Dental research" class="img-fluid" />
+					<a href="single.html">Tooth Regeneration Breakthrough</a>
+				</div>
+				<div class="col-lg-5 mb-lg-5 mb-4">
+					<h5>April 8, 2024.</h5>
+					<h4 class="my-3">Researchers Develop New Biomaterial for Tooth Regeneration</h4>
+					<p class="my-3">A team of scientists has announced a new biomaterial that could help regenerate
+						damaged tooth tissue, offering hope for millions suffering from tooth decay and injury. The
+						innovation is expected to revolutionize restorative dentistry in the coming years.</p>
+					<a href="single.html" class="btn-banner"> Read More </a>
+				</div>
+				<div class="col-lg-5 mb-lg-0 mb-4">
+					<h5>March 20, 2024.</h5>
+					<h4 class="my-3">AI Technology Now Assists in Early Detection of Oral Cancer</h4>
+					<p class="my-3">Dental clinics worldwide are adopting artificial intelligence tools to help detect
+						oral cancer at earlier stages. This technology analyzes patient scans and highlights potential
+						areas of concern, improving outcomes and saving lives.</p>
+					<a href="single.html" class="btn-banner"> Read More </a>
+				</div>
+				<div class="col-lg-7 blog-img2">
+					<img src="images/blog2.jpg" alt="Dental health day" class="img-fluid" />
+					<a href="single.html">Global Dental Health Day 2024</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- //dental news -->
+
+	<!-- contact -->
+	<section class="contact text-center py-5">
+		<div class="container py-sm-3">
+			<h4>Make your dream smile a reality</h4>
+			<p class="mt-3">Call Us To Book Your contact Today</p>
+			<a href="contact.html">Book an contact</a>
+		</div>
+	</section>
+	<!-- //contact -->
+
+	<!-- footer -->
+	<footer class="py-5">
+		<div class="container py-sm-3">
+			<div class="row footer-grids">
+				<div class="col-lg-3 col-sm-6 mb-lg-0 mb-sm-5 mb-4">
+					<h4 class="mb-sm-4 mb-3"><span class="fa fa-stethoscope"></span> denTallo</h4>
+					<p class="mb-3">denTallo is dedicated to providing exceptional dental care with a focus on patient
+						comfort, advanced technology, and personalized treatment.</p>
+					<h5>Trusted by <span>500+ People</span> </h5>
+				</div>
+				<div class="col-lg-3 col-sm-6 mb-lg-0 mb-sm-5 mb-4">
+					<h4 class="mb-sm-4 mb-3">Address Info</h4>
+					<p><span class="fa mr-2 fa-map-marker"></span>House 12, Road 5, Dhanmondi, Dhaka, Bangladesh</p>
+					<p class="phone py-2"><span class="fa mr-2 fa-phone"></span> +1(12) 123 456 789 </p>
+					<p><span class="fa mr-2 fa-envelope"></span><a
+							href="mailto:info@dentallo.com.bd">info@dentallo.com.bd</a></p>
+				</div>
+				<div class="col-lg-2 col-sm-6 mb-sm-0 mb-4">
+					<h4 class="mb-sm-4 mb-3">Quick Links</h4>
+					<ul>
+						<li><a href="#">Terms & Conditions</a></li>
+						<li class="my-2"><a href="#">Support Helpline</a></li>
+						<li><a href="#">Healthy Tips</a></li>
+						<li class="mt-2"><a href="#">Privacy Ploicy</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-4 col-sm-6">
+					<h4 class="mb-sm-4 mb-3">Subscribe Us</h4>
+					<p class="mb-3">Subscribe to our newsletter</p>
+					<form action="#" method="post" class="d-flex">
+						<input type="email" id="email" name="EMAIL" placeholder="Enter your email here" required="">
+						<button type="submit" class="btn">Subscribe</button>
+					</form>
+					<div class="icon-social mt-3">
+						<a href="#" class="button-footr">
+							<span class="fa mx-2 fa-facebook"></span>
+						</a>
+						<a href="#" class="button-footr">
+							<span class="fa mx-2 fa-twitter"></span>
+						</a>
+						<a href="#" class="button-footr">
+							<span class="fa mx-2 fa-dribbble"></span>
+						</a>
+						<a href="#" class="button-footr">
+							<span class="fa mx-2 fa-pinterest"></span>
+						</a>
+						<a href="#" class="button-footr">
+							<span class="fa mx-2 fa-google-plus"></span>
+						</a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- //footer -->
+
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container py-4">
+			<div class=" text-center">
+				<p>© 2022 Dental Hospital. All Rights Reserved | Design by Fahim Faisal</p>
+			</div>
+		</div>
+	</div>
+	<!-- //copyright -->
+
+	<!-- move top -->
+	<div class="move-top text-right">
+		<a href="#home" class="move-top">
+			<span class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
+		</a>
+	</div>
+	<!-- move top -->
+
+	<!-- Performance Optimization Script -->
+	<script>
+		// Optimize page transitions
+		document.addEventListener('DOMContentLoaded', function () {
+			// Cache DOM elements
+			const navLinks = document.querySelectorAll('nav a[href]');
+			const images = document.querySelectorAll('img');
+
+			// Optimize image loading
+			images.forEach(function (img) {
+				if (!img.hasAttribute('loading')) {
+					img.setAttribute('loading', 'lazy');
+				}
+			});
+
+			// Smooth page transitions
+			navLinks.forEach(function (link) {
+				link.addEventListener('click', function (e) {
+					// Add loading indicator
+					document.body.style.cursor = 'wait';
+
+					// Preload the target page
+					const targetUrl = this.href;
+					if (targetUrl && !targetUrl.includes('#')) {
+						fetch(targetUrl)
+							.then(response => response.text())
+							.then(html => {
+								// Cache the page content
+								sessionStorage.setItem('cached_' + targetUrl, html);
+							})
+							.catch(error => console.log('Preload failed:', error));
+					}
+				});
+			});
+
+			// Optimize scroll performance
+			let ticking = false;
+			function updateScroll() {
+				ticking = false;
+				// Scroll optimizations here
+			}
+
+			window.addEventListener('scroll', function () {
+				if (!ticking) {
+					requestAnimationFrame(updateScroll);
+					ticking = true;
+				}
+			});
+		});
+
+		// Service Worker for caching (if supported)
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function () {
+				navigator.serviceWorker.register('/sw.js')
+					.then(function (registration) {
+						console.log('SW registered: ', registration);
+					})
+					.catch(function (registrationError) {
+						console.log('SW registration failed: ', registrationError);
+					});
+			});
+		}
+
+		// Optimize font loading
+		if ('fonts' in document) {
+			Promise.all([
+				document.fonts.load('300 16px Open Sans'),
+				document.fonts.load('400 16px Open Sans'),
+				document.fonts.load('600 16px Open Sans')
+			]).then(function () {
+				document.documentElement.classList.add('fonts-loaded');
+			});
+		}
+	</script>
+
+	<!-- Dental Chatbot Floating Button and Window -->
+	<div id="dentalChatbotBtn"
+		style="position:fixed;bottom:30px;right:30px;z-index:9999;background:linear-gradient(135deg,#007bff,#0056b3);color:#fff;padding:16px 24px;border-radius:30px;box-shadow:0 4px 15px rgba(0,123,255,0.3);cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;">
+		<span class="fa fa-comments"></span> Chat with us
+	</div>
+	<div id="dentalChatbotWindow"
+		style="display:none;position:fixed;bottom:90px;right:30px;z-index:10000;width:350px;max-width:95vw;height:500px;background:#fff;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.2);flex-direction:column;overflow:hidden;">
+		<div
+			style="background:linear-gradient(135deg,#007bff,#0056b3);color:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;">
+			<span style="font-weight:600;display:flex;align-items:center;gap:8px;"><span
+					class="fa fa-stethoscope"></span> denTallo Dental Assistant</span>
+			<button id="closeDentalChatbot"
+				style="background:none;border:none;color:#fff;font-size:24px;cursor:pointer;">×</button>
+		</div>
+		<div id="dentalChatbotMessages" style="flex:1;padding:20px;overflow-y:auto;background:#f8f9fa;"></div>
+		<div style="padding:15px 20px;background:#fff;border-top:1px solid #e9ecef;display:flex;gap:10px;">
+			<input type="text" id="dentalChatbotInput" placeholder="Type your message here..."
+				style="flex:1;padding:10px 15px;border:1px solid #ddd;border-radius:25px;outline:none;font-size:14px;" />
+			<button id="dentalSendMessage"
+				style="background:linear-gradient(135deg,#007bff,#0056b3);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;"><span
+					class="fa fa-paper-plane"></span></button>
+		</div>
+	</div>
+	<script src="js/dentalChatbot.js"></script>
+	<!-- End Dental Chatbot -->
+
+	<script>
+		async function sendOtpEmail(receiverEmail) {
+			try {
+				const response = await fetch('http://localhost:3000/send-otp', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ email: receiverEmail })
+				});
+
+				const result = await response.json();
+
+				if (result.success) {
+					// Redirect to OTP verification page with email and OTP as query params
+					window.location.href = `otp-verification.html?email=${encodeURIComponent(receiverEmail)}&otp=${result.otp}`;
+				} else {
+					alert(`Failed to send OTP.\n\nReason: ${result.message}`);
+				}
+			} catch (error) {
+				console.error('Error sending OTP:', error);
+				alert('An error occurred while sending the OTP. Please try again later.');
+			}
+		}
+
+		document.addEventListener('DOMContentLoaded', function () {
+			const btn = document.getElementById('sendOtpBtn');
+			if (btn) {
+				btn.addEventListener('click', function () {
+					const email = prompt('Enter recipient email:');
+					if (!email) return;
+					sendOtpEmail(email);
+				});
+			}
+		});
+	</script>
+
+</body>
+
+</html>

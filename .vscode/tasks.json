@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"command": "node",
+			"args": [
+				"server.js"
+			],
+			"label": "Run denTallo Project",
+			"type": "shell",
+			"isBackground": true
+		}
+	]
+}

@@ -1,0 +1,2097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - denTallo Dental Clinic</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: #f8f9fa;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #05060c 0%, #764ba2 100%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: 600;
+            font-size: 24px;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: white !important;
+        }
+
+        .user-info {
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+        .main-content {
+            padding: 40px 0;
+        }
+
+        .welcome-card {
+            background: linear-gradient(135deg, #05060c 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome-card h2 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .welcome-card p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+
+        .dashboard-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: none;
+        }
+
+        .dashboard-card h5 {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dashboard-card h5 .fa {
+            color: #007bff;
+        }
+
+        .contact-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #007bff;
+        }
+
+        .contact-item h6 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .contact-item p {
+            margin: 5px 0;
+            color: #6c757d;
+        }
+
+        .contact-item .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status.confirmed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status.completed {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: none;
+        }
+
+        .stat-card .stat-icon {
+            font-size: 40px;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .stat-card .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .stat-label {
+            color: #6c757d;
+            font-weight: 500;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .quick-action-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 123, 255, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+        .quick-action-btn .fa {
+            font-size: 24px;
+        }
+
+        .no-contact {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+
+        .no-contact .fa {
+            font-size: 60px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        /* Payment System Styles */
+        .payment-methods {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            border-color: #007bff;
+            background: #f8f9fa;
+        }
+
+        .payment-method input[type="radio"] {
+            margin: 0;
+        }
+
+        .payment-method label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .payment-summary-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .bill-checkbox {
+            transform: scale(1.2);
+        }
+
+        .card-header .badge {
+            font-size: 12px;
+        }
+
+        /* Health Records Modal Styles */
+        .health-records-modal .modal-content {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .health-records-modal .modal-header {
+            border-radius: 15px 15px 0 0;
+            border-bottom: none;
+        }
+
+        .health-records-modal .modal-body {
+            padding: 30px;
+        }
+
+        .health-records-modal .nav-tabs {
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .health-records-modal .nav-tabs .nav-link {
+            border: none;
+            border-radius: 10px 10px 0 0;
+            margin-right: 5px;
+            padding: 12px 20px;
+            color: #6c757d;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .health-records-modal .nav-tabs .nav-link:hover {
+            background-color: #f8f9fa;
+            color: #007bff;
+        }
+
+        .health-records-modal .nav-tabs .nav-link.active {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+        }
+
+        .health-records-modal .tab-content {
+            padding-top: 20px;
+        }
+
+        .health-records-modal .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 15px;
+        }
+
+        .health-records-modal .card-header {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-bottom: 1px solid #dee2e6;
+            border-radius: 10px 10px 0 0;
+            padding: 15px 20px;
+        }
+
+        .health-records-modal .border-left-success {
+            border-left: 4px solid #28a745 !important;
+        }
+
+        .health-records-modal .border-left-warning {
+            border-left: 4px solid #ffc107 !important;
+        }
+
+        .health-records-modal .border-left-info {
+            border-left: 4px solid #17a2b8 !important;
+        }
+
+        .health-records-modal .border-left-danger {
+            border-left: 4px solid #dc3545 !important;
+        }
+
+        .real-time-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 9999;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .refresh-btn {
+            background: none;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .refresh-btn:hover {
+            color: #0056b3;
+            transform: rotate(180deg);
+        }
+
+        .health-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .health-stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        .health-stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .health-stat-label {
+            font-size: 12px;
+            color: #6c757d;
+            font-weight: 500;
+        }
+    </style>
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <!-- Firebase Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD_FYW1O-iFXXTfd4fgYmLi6G1lhAaK_B8",
+            authDomain: "dentello-bf49a.firebaseapp.com",
+            projectId: "dentello-bf49a",
+            storageBucket: "dentello-bf49a.appspot.com",
+            messagingSenderId: "209346364277",
+            appId: "1:209346364277:web:a0cd05825d193bb85d093c",
+            measurementId: "G-DERY2TQFE4"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        if (firebase.analytics) {
+            firebase.analytics();
+        }
+    </script>
+    <!-- End Firebase -->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="fa fa-stethoscope"></span> denTallo
+            </a>
+            
+            <div class="navbar-nav ms-auto">
+                <div class="user-info">
+                    <span class="fa fa-user-circle"></span>
+                    <span id="userName">Patient</span>
+                    <a href="#" class="logout-btn" onclick="logout()">
+                        <span class="fa fa-sign-out"></span> Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Welcome Card -->
+            <div class="welcome-card">
+                <h2>Welcome back, <span id="welcomeName">Patient</span>!</h2>
+                <p>Manage your dental contact and health records</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <span class="fa fa-calendar-check"></span>
+                    </div>
+                    <div class="stat-number" id="totalcontact">3</div>
+                    <div class="stat-label">Total contact</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <span class="fa fa-clock-o"></span>
+                    </div>
+                    <div class="stat-number" id="upcomingcontact">1</div>
+                    <div class="stat-label">Upcoming</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <span class="fa fa-check-circle"></span>
+                    </div>
+                    <div class="stat-number" id="completedcontact">2</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <span class="fa fa-file-text"></span>
+                    </div>
+                    <div class="stat-number" id="healthRecords">5</div>
+                    <div class="stat-label">Health Records</div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="row">
+                <!-- contact -->
+                <div class="col-lg-8">
+                    <div class="dashboard-card">
+                        <h5>
+                            <span class="fa fa-calendar"></span>
+                            Recent contact
+                        </h5>
+                        
+                        <div id="contactList">
+                            <!-- contact will be loaded here -->
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <a href="#" class="btn btn-primary" onclick="openBookingModal()">
+                                <span class="fa fa-plus"></span> Book New contact
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="col-lg-4">
+                    <div class="dashboard-card">
+                        <h5>
+                            <span class="fa fa-bolt"></span>
+                            Quick Actions
+                        </h5>
+                        
+                       
+                            
+                            <a href="#" class="quick-action-btn" onclick="viewRecords()">
+                                <span class="fa fa-file-text"></span>
+                                View Records
+                            </a>
+                            
+                            <a href="#" class="quick-action-btn" onclick="contactClinic()">
+                                <span class="fa fa-phone"></span>
+                                Contact Clinic
+                            </a>
+                            
+                            <a href="#" class="quick-action-btn" onclick="getDirections()">
+                                <span class="fa fa-map-marker"></span>
+                                Get Directions
+                            </a>
+                            
+                            <a href="#" class="quick-action-btn" onclick="payBill()">
+                                <span class="fa fa-credit-card"></span>
+                                Pay Bill
+                            </a>
+                            
+                            <a href="#" class="quick-action-btn" onclick="getHelp()">
+                                <span class="fa fa-question-circle"></span>
+                                Get Help
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="dashboard-card">
+                        <h5>
+                            <span class="fa fa-info-circle"></span>
+                            Contact Information
+                        </h5>
+                        
+                        <p><strong>Phone:</strong> +880 17 1234 5678</p>
+                        <p><strong>Email:</strong> info@dentallo.com.bd</p>
+                        <p><strong>Address:</strong> House 12, Road 5, Dhanmondi, Dhaka</p>
+                        <p><strong>Hours:</strong> Mon-Fri: 8:30 AM - 9:30 PM</p>
+                    </div>
+                </div>
+            </div>         
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(135deg, #007bff, #0056b3); color: white;">
+                    <h5 class="modal-title" id="bookingModalLabel">
+                        <span class="fa fa-calendar-plus"></span> Book New contact
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="bookingForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="serviceType">Service Type *</label>
+                                    <select class="form-control" id="serviceType" required>
+                                        <option value="">Select a service</option>
+                                        <option value="Routine Check-up">Routine Check-up</option>
+                                        <option value="Teeth Cleaning">Teeth Cleaning</option>
+                                        <option value="Root Canal Treatment">Root Canal Treatment</option>
+                                        <option value="Teeth Whitening">Teeth Whitening</option>
+                                        <option value="Dental Implants">Dental Implants</option>
+                                        <option value="Braces & Orthodontics">Braces & Orthodontics</option>
+                                        <option value="Tooth Extraction">Tooth Extraction</option>
+                                        <option value="Dental Crowns & Bridges">Dental Crowns & Bridges</option>
+                                        <option value="Emergency Care">Emergency Care</option>
+                                        <option value="Consultation">Consultation</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="preferredDoctor">Preferred Doctor</label>
+                                    <select class="form-control" id="preferredDoctor">
+                                        <option value="">Any available doctor</option>
+                                        <option value="Dr. Md Habibur Rahman">Dr. Md Habibur Rahman</option>
+                                        <option value="Dr. Afroja Noor">Dr. Afroja Noor</option>
+                                        <option value="Dr. Arifur Rahman">Dr. Arifur Rahman</option>
+                                        <option value="Dr. Samira Khan">Dr. Samira Khan</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="contactDate">Preferred Date *</label>
+                                    <input type="date" class="form-control" id="contactDate" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="contactTime">Preferred Time *</label>
+                                    <select class="form-control" id="contactTime" required>
+                                        <option value="">Select time</option>
+                                        <option value="09:00">9:00 AM</option>
+                                        <option value="10:00">10:00 AM</option>
+                                        <option value="11:00">11:00 AM</option>
+                                        <option value="12:00">12:00 PM</option>
+                                        <option value="14:00">2:00 PM</option>
+                                        <option value="15:00">3:00 PM</option>
+                                        <option value="16:00">4:00 PM</option>
+                                        <option value="17:00">5:00 PM</option>
+                                        <option value="18:00">6:00 PM</option>
+                                        <option value="19:00">7:00 PM</option>
+                                        <option value="20:00">8:00 PM</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactNotes">Additional Notes</label>
+                            <textarea class="form-control" id="contactNotes" rows="3" placeholder="Any specific concerns or requests..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="urgency">Urgency Level</label>
+                            <select class="form-control" id="urgency">
+                                <option value="normal">Normal</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="emergency">Emergency</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="submitBooking()">
+                        <span class="fa fa-check"></span> Book contact
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Health Records Modal -->
+    <div class="modal fade health-records-modal" id="recordsModal" tabindex="-1" role="dialog" aria-labelledby="recordsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(135deg, #28a745, #20c997); color: white;">
+                    <h5 class="modal-title" id="recordsModalLabel">
+                        <span class="fa fa-file-text"></span> Health Records
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Health Stats Summary -->
+                    <div class="health-stats-grid" id="healthStatsSummary">
+                        <!-- Health stats will be loaded here -->
+                    </div>
+
+                    <!-- Patient Info -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6><span class="fa fa-user"></span> Patient Information</h6>
+                            <div id="patientInfo">
+                                <!-- Patient info will be loaded here -->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><span class="fa fa-chart-line"></span> Health Summary</h6>
+                            <div id="healthSummary">
+                                <!-- Health summary will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Records Navigation -->
+                    <ul class="nav nav-tabs" id="recordsTabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="treatment-tab" data-toggle="tab" href="#treatment" role="tab">
+                                <span class="fa fa-stethoscope"></span> Treatment History
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="xray-tab" data-toggle="tab" href="#xray" role="tab">
+                                <span class="fa fa-image"></span> X-Ray Records
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="prescription-tab" data-toggle="tab" href="#prescription" role="tab">
+                                <span class="fa fa-prescription"></span> Prescriptions
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="lab-tab" data-toggle="tab" href="#lab" role="tab">
+                                <span class="fa fa-flask"></span> Lab Results
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="notes-tab" data-toggle="tab" href="#notes" role="tab">
+                                <span class="fa fa-user-md"></span> Doctor Notes
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Records Content -->
+                    <div class="tab-content mt-3" id="recordsTabContent">
+                        <!-- Treatment History -->
+                        <div class="tab-pane fade show active" id="treatment" role="tabpanel">
+                            <div id="treatmentHistory">
+                                <!-- Treatment history will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- X-Ray Records -->
+                        <div class="tab-pane fade" id="xray" role="tabpanel">
+                            <div id="xrayRecords">
+                                <!-- X-ray records will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Prescriptions -->
+                        <div class="tab-pane fade" id="prescription" role="tabpanel">
+                            <div id="prescriptionRecords">
+                                <!-- Prescriptions will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Lab Results -->
+                        <div class="tab-pane fade" id="lab" role="tabpanel">
+                            <div id="labResults">
+                                <!-- Lab results will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Doctor Notes -->
+                        <div class="tab-pane fade" id="notes" role="tabpanel">
+                            <div id="doctorNotes">
+                                <!-- Doctor notes will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="downloadRecords()">
+                        <span class="fa fa-download"></span> Download Records
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(135deg, #dc3545, #c82333); color: white;">
+                    <h5 class="modal-title" id="paymentModalLabel">
+                        <span class="fa fa-credit-card"></span> Billing & Payment
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Billing Summary -->
+                    <div class="row mb-4">
+                        <div class="col-md-8">
+                            <h6><span class="fa fa-file-invoice"></span> Billing Summary</h6>
+                            <div id="billingSummary">
+                                <!-- Billing summary will be loaded here -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h6><span class="fa fa-calculator"></span> Payment Summary</h6>
+                            <div id="paymentSummary">
+                                <!-- Payment summary will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Navigation -->
+                    <ul class="nav nav-tabs" id="paymentTabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="bills-tab" data-toggle="tab" href="#bills" role="tab">Outstanding Bills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab">Payment History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pay-tab" data-toggle="tab" href="#pay" role="tab">Make Payment</a>
+                        </li>
+                    </ul>
+
+                    <!-- Payment Content -->
+                    <div class="tab-content mt-3" id="paymentTabContent">
+                        <!-- Outstanding Bills -->
+                        <div class="tab-pane fade show active" id="bills" role="tabpanel">
+                            <div id="outstandingBills">
+                                <!-- Outstanding bills will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Payment History -->
+                        <div class="tab-pane fade" id="history" role="tabpanel">
+                            <div id="paymentHistory">
+                                <!-- Payment history will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Make Payment -->
+                        <div class="tab-pane fade" id="pay" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h6>Payment Method</h6>
+                                    <form id="paymentForm">
+                                        <div class="form-group">
+                                            <label>Select Payment Method</label>
+                                            <div class="payment-methods">
+                                                <div class="payment-method">
+                                                    <input type="radio" id="creditCard" name="paymentMethod" value="credit" checked>
+                                                    <label for="creditCard">
+                                                        <span class="fa fa-credit-card"></span> Credit/Debit Card
+                                                    </label>
+                                                </div>
+                                                <div class="payment-method">
+                                                    <input type="radio" id="mobileBanking" name="paymentMethod" value="mobile">
+                                                    <label for="mobileBanking">
+                                                        <span class="fa fa-mobile"></span> Mobile Banking
+                                                    </label>
+                                                </div>
+                                                <div class="payment-method">
+                                                    <input type="radio" id="bankTransfer" name="paymentMethod" value="transfer">
+                                                    <label for="bankTransfer">
+                                                        <span class="fa fa-university"></span> Bank Transfer
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="creditCardForm">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="cardNumber">Card Number</label>
+                                                        <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="expiryDate">Expiry Date</label>
+                                                        <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" maxlength="5">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="cvv">CVV</label>
+                                                        <input type="text" class="form-control" id="cvv" placeholder="123" maxlength="4">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cardHolderName">Cardholder Name</label>
+                                                <input type="text" class="form-control" id="cardHolderName" placeholder="Fahim Faisal">
+                                            </div>
+                                        </div>
+
+                                        <div id="mobileBankingForm" style="display: none;">
+                                            <div class="form-group">
+                                                <label for="mobileNumber">Mobile Number</label>
+                                                <input type="tel" class="form-control" id="mobileNumber" placeholder="+880 17 1234 5678">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="bankName">Bank Name</label>
+                                                <select class="form-control" id="bankName">
+                                                    <option value="">Select Bank</option>
+                                                    <option value="brac">BRAC Bank</option>
+                                                    <option value="dbbl">DBBL</option>
+                                                    <option value="bkash">bKash</option>
+                                                    <option value="nagad">Nagad</option>
+                                                    <option value="rocket">Rocket</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div id="bankTransferForm" style="display: none;">
+                                            <div class="form-group">
+                                                <label>Bank Account Details</label>
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <p><strong>Bank:</strong> denTallo Dental Clinic</p>
+                                                        <p><strong>Account Number:</strong> 1234567890</p>
+                                                        <p><strong>Routing Number:</strong> 987654321</p>
+                                                        <p><strong>Reference:</strong> Use your patient ID as reference</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="payment-summary-card">
+                                        <h6>Payment Summary</h6>
+                                        <div id="paymentDetails">
+                                            <!-- Payment details will be loaded here -->
+                                        </div>
+                                        <button class="btn btn-success btn-block mt-3" onclick="processPayment()">
+                                            <span class="fa fa-lock"></span> Pay Securely
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info" onclick="downloadInvoice()">
+                        <span class="fa fa-download"></span> Download Invoice
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (isLoggedIn !== 'true') {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Load user data
+            const userData = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            document.getElementById('userName').textContent = userData.name || 'Patient';
+            document.getElementById('welcomeName').textContent = userData.name || 'Patient';
+        }
+
+        // Health Records Data Structure
+        const healthRecords = {
+            patientInfo: {
+                name: '',
+                age: 32,
+                gender: 'Male',
+                bloodType: 'O+',
+                allergies: 'Penicillin, Latex',
+                emergencyContact: '+880 17 1234 5678',
+                lastVisit: '2024-01-15',
+                nextVisit: '2024-02-20',
+                insuranceProvider: 'Delta Dental',
+                policyNumber: 'DD-123456789'
+            },
+            healthSummary: {
+                overallHealth: 'Good',
+                dentalHealth: 'Fair',
+                lastCleaning: '2024-01-15',
+                cavities: 2,
+                fillings: 3,
+                crowns: 1,
+                rootCanals: 0,
+                gumDisease: 'None',
+                oralCancerRisk: 'Low'
+            },
+            treatmentHistory: [
+                {
+                    id: 'TR-001',
+                    date: '2024-01-15',
+                    treatment: 'Dental Cleaning & Check-up',
+                    doctor: 'Dr. Sarah Johnson',
+                    description: 'Regular dental cleaning and comprehensive oral examination. Removed plaque and tartar buildup.',
+                    cost: '2,500 Tk',
+                    status: 'Completed',
+                    followUp: '6 months'
+                },
+                {
+                    id: 'TR-002',
+                    date: '2023-12-10',
+                    treatment: 'Cavity Filling',
+                    doctor: 'Dr. Michael Chen',
+                    description: 'Composite filling for cavity in upper right molar (tooth #3).',
+                    cost: '3,200 Tk',
+                    status: 'Completed',
+                    followUp: '1 year'
+                },
+                {
+                    id: 'TR-003',
+                    date: '2023-11-05',
+                    treatment: 'Root Canal Therapy',
+                    doctor: 'Dr. Emily Rodriguez',
+                    description: 'Root canal treatment for lower left molar (tooth #19) due to severe decay.',
+                    cost: '8,500 Tk',
+                    status: 'Completed',
+                    followUp: '6 months'
+                },
+                {
+                    id: 'TR-004',
+                    date: '2023-09-20',
+                    treatment: 'Crown Placement',
+                    doctor: 'Dr. David Kim',
+                    description: 'Porcelain crown placement on upper right premolar (tooth #4) after root canal.',
+                    cost: '12,000 Tk',
+                    status: 'Completed',
+                    followUp: '1 year'
+                }
+            ],
+            xrayRecords: [
+                {
+                    id: 'XR-001',
+                    date: '2024-01-15',
+                    type: 'Panoramic X-Ray',
+                    doctor: 'Dr. Sarah Johnson',
+                    findings: 'Normal bone structure, no signs of decay in wisdom teeth',
+                    image: 'panoramic_20240115.jpg',
+                    status: 'Normal'
+                },
+                {
+                    id: 'XR-002',
+                    date: '2023-12-10',
+                    type: 'Bitewing X-Ray',
+                    doctor: 'Dr. Michael Chen',
+                    findings: 'Small cavity detected in upper right molar, no bone loss',
+                    image: 'bitewing_20231210.jpg',
+                    status: 'Cavity Detected'
+                },
+                {
+                    id: 'XR-003',
+                    date: '2023-11-05',
+                    type: 'Periapical X-Ray',
+                    doctor: 'Dr. Emily Rodriguez',
+                    findings: 'Deep decay reaching pulp chamber, root canal recommended',
+                    image: 'periapical_20231105.jpg',
+                    status: 'Treatment Required'
+                }
+            ],
+            prescriptions: [
+                {
+                    id: 'RX-001',
+                    date: '2024-01-15',
+                    doctor: 'Dr. Sarah Johnson',
+                    medications: [
+                        {
+                            name: 'Amoxicillin 500mg',
+                            dosage: '1 capsule 3 times daily',
+                            duration: '7 days',
+                            purpose: 'Preventive antibiotic after cleaning'
+                        },
+                        {
+                            name: 'Ibuprofen 400mg',
+                            dosage: '1 tablet as needed for pain',
+                            duration: '3 days',
+                            purpose: 'Pain relief'
+                        }
+                    ],
+                    notes: 'Take antibiotics with food. Avoid alcohol while on medication.'
+                },
+                {
+                    id: 'RX-002',
+                    date: '2023-12-10',
+                    doctor: 'Dr. Michael Chen',
+                    medications: [
+                        {
+                            name: 'Acetaminophen 500mg',
+                            dosage: '1-2 tablets every 6 hours',
+                            duration: '5 days',
+                            purpose: 'Pain relief after filling'
+                        }
+                    ],
+                    notes: 'Take as needed for sensitivity after filling procedure.'
+                }
+            ],
+            labResults: [
+                {
+                    id: 'LAB-001',
+                    date: '2024-01-15',
+                    test: 'Blood Sugar Test',
+                    doctor: 'Dr. Sarah Johnson',
+                    result: 'Normal (95 mg/dL)',
+                    notes: 'Routine screening, within normal range'
+                },
+                {
+                    id: 'LAB-002',
+                    date: '2023-12-10',
+                    test: 'CBC (Complete Blood Count)',
+                    doctor: 'Dr. Michael Chen',
+                    result: 'Normal',
+                    notes: 'All parameters within normal limits'
+                },
+                {
+                    id: 'LAB-003',
+                    date: '2023-11-05',
+                    test: 'Bacterial Culture',
+                    doctor: 'Dr. Emily Rodriguez',
+                    result: 'Positive for Streptococcus mutans',
+                    notes: 'Common oral bacteria, treated with antibiotics'
+                }
+            ],
+            doctorNotes: [
+                {
+                    id: 'NOTE-001',
+                    date: '2024-01-15',
+                    doctor: 'Dr. Sarah Johnson',
+                    notes: 'Patient shows good oral hygiene habits. Minor tartar buildup removed. No new cavities detected. Continue current brushing and flossing routine.',
+                    followUp: 'Schedule next cleaning in 6 months'
+                },
+                {
+                    id: 'NOTE-002',
+                    date: '2023-12-10',
+                    doctor: 'Dr. Michael Chen',
+                    notes: 'Cavity filling completed successfully. Patient reported mild sensitivity for 2 days post-procedure, which is normal. Filling appears well-seated.',
+                    followUp: 'Monitor for any sensitivity issues'
+                },
+                {
+                    id: 'NOTE-003',
+                    date: '2023-11-05',
+                    doctor: 'Dr. Emily Rodriguez',
+                    notes: 'Root canal therapy completed. Patient tolerated procedure well. Temporary filling placed. Crown placement scheduled for next visit.',
+                    followUp: 'Return in 2 weeks for permanent crown'
+                }
+            ],
+            vitalSigns: [
+                {
+                    date: '2024-01-15',
+                    bloodPressure: '120/80',
+                    heartRate: '72',
+                    temperature: '98.6°F',
+                    weight: '70 kg'
+                },
+                {
+                    date: '2023-12-10',
+                    bloodPressure: '118/78',
+                    heartRate: '75',
+                    temperature: '98.4°F',
+                    weight: '70 kg'
+                }
+            ]
+        };
+
+        // Real-time health records updates
+        function initializeHealthRecords() {
+            // Update health records count in stats
+            document.getElementById('healthRecords').textContent = healthRecords.treatmentHistory.length;
+            
+            // Set up real-time updates every 30 seconds
+            setInterval(updateHealthRecords, 30000);
+            
+            // Initial update
+            updateHealthRecords();
+        }
+
+        function updateHealthRecords() {
+            // Simulate real-time updates
+            const now = new Date();
+            const lastUpdate = new Date(healthRecords.patientInfo.lastVisit);
+            
+            // Update last visit if it's been more than a day
+            if (now.getTime() - lastUpdate.getTime() > 24 * 60 * 60 * 1000) {
+                healthRecords.patientInfo.lastVisit = now.toISOString().split('T')[0];
+            }
+            
+            // Update health summary based on recent treatments
+            const recentTreatments = healthRecords.treatmentHistory.filter(t => 
+                new Date(t.date) > new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000)
+            );
+            
+            if (recentTreatments.length > 0) {
+                healthRecords.healthSummary.dentalHealth = 'Good';
+                healthRecords.healthSummary.lastCleaning = recentTreatments[0].date;
+            }
+            
+            // Update stats
+            document.getElementById('healthRecords').textContent = healthRecords.treatmentHistory.length;
+        }
+
+        // Firestore reference
+        const db = firebase.firestore();
+
+        // Real-time listener for appointments (contact)
+        function renderContactList(contact) {
+            if (!contact.length) {
+                document.getElementById('contactList').innerHTML = '<div class="text-center text-muted">No appointments found.</div>';
+                return;
+            }
+            let html = '<ul class="list-group">';
+            contact.forEach(item => {
+                html += `<li class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>${item.service}</strong><br>
+                            <small>${item.date} at ${item.time}</small><br>
+                            <span class="badge badge-info">${item.status || ''}</span>
+                        </div>
+                        <div>
+                            <span class="fa fa-user-md"></span> ${item.doctor || ''}
+                        </div>
+                    </div>
+                </li>`;
+            });
+            html += '</ul>';
+            document.getElementById('contactList').innerHTML = html;
+        }
+
+        function listenForContact() {
+            const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            if (!user.email) {
+                document.getElementById('contactList').innerHTML = '<div class="text-danger">User not found. Please log in again.</div>';
+                return;
+            }
+            const userEmail = user.email.toLowerCase().trim();
+            firebase.firestore().collection('appointments')
+              .where('email', '==', userEmail)
+              .orderBy('createdAt', 'desc')
+              .onSnapshot(snapshot => {
+                const contact = snapshot.docs.map(doc => doc.data());
+                renderContactList(contact);
+              }, err => {
+                console.error('Firestore error:', err);
+                document.getElementById('contactList').innerHTML = '<div class="text-danger">Failed to load appointments.</div>';
+              });
+        }
+
+        // Start listening for contact on page load
+        window.addEventListener('DOMContentLoaded', listenForContact);
+
+        // Update stats
+        function updateStats() {
+            const usercontact = JSON.parse(localStorage.getItem('usercontact')) || samplecontact;
+            const total = usercontact.length;
+            const upcoming = usercontact.filter(a => a.status === 'confirmed' || a.status === 'pending').length;
+            const completed = usercontact.filter(a => a.status === 'completed').length;
+            
+            document.getElementById('totalcontact').textContent = total;
+            document.getElementById('upcomingcontact').textContent = upcoming;
+            document.getElementById('completedcontact').textContent = completed;
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        }
+
+        // Initialize dashboard
+        window.addEventListener('load', function() {
+            checkAuth();
+            loadcontact();
+            updateStats();
+            initializeHealthRecords(); // Initialize health records
+            
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('contactDate').min = today;
+
+            // Payment method switching
+            document.addEventListener('change', function(e) {
+                if (e.target.name === 'paymentMethod') {
+                    const method = e.target.value;
+                    
+                    // Hide all forms
+                    document.getElementById('creditCardForm').style.display = 'none';
+                    document.getElementById('mobileBankingForm').style.display = 'none';
+                    document.getElementById('bankTransferForm').style.display = 'none';
+                    
+                    // Show selected form
+                    if (method === 'credit') {
+                        document.getElementById('creditCardForm').style.display = 'block';
+                    } else if (method === 'mobile') {
+                        document.getElementById('mobileBankingForm').style.display = 'block';
+                    } else if (method === 'transfer') {
+                        document.getElementById('bankTransferForm').style.display = 'block';
+                    }
+                }
+            });
+
+            // Bill selection
+            document.addEventListener('change', function(e) {
+                if (e.target.classList.contains('bill-checkbox')) {
+                    updatePaymentDetails();
+                }
+            });
+
+            // Card number formatting
+            document.addEventListener('input', function(e) {
+                if (e.target.id === 'cardNumber') {
+                    let value = e.target.value.replace(/\s/g, '').replace(/\D/g, '');
+                    value = value.replace(/(\d{4})/g, '$1 ').trim();
+                    e.target.value = value;
+                }
+                
+                if (e.target.id === 'expiryDate') {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
+                    e.target.value = value;
+                }
+            });
+        });
+
+        // Booking functions
+        function openBookingModal() {
+            $('#bookingModal').modal('show');
+        }
+
+        function submitBooking() {
+            const serviceType = document.getElementById('serviceType').value;
+            const preferredDoctor = document.getElementById('preferredDoctor').value;
+            const contactDate = document.getElementById('contactDate').value;
+            const contactTime = document.getElementById('contactTime').value;
+            const contactNotes = document.getElementById('contactNotes').value;
+            const urgency = document.getElementById('urgency').value;
+
+            if (!serviceType || !contactDate || !contactTime) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Get current user info
+            const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            if (!user.email) {
+                alert('User not found. Please log in again.');
+                return;
+            }
+            const userEmail = user.email.toLowerCase().trim();
+
+            // Create new appointment object
+            const newAppointment = {
+                service: serviceType,
+                date: contactDate,
+                time: contactTime,
+                status: 'pending',
+                doctor: preferredDoctor || 'To be assigned',
+                notes: contactNotes,
+                urgency: urgency,
+                email: userEmail,
+                name: user.name || '',
+                phone: user.phone || '',
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            };
+
+            // Save to Firestore
+            firebase.firestore().collection('appointments').add(newAppointment)
+                .then(() => {
+                    $('#bookingModal').modal('hide');
+                    document.getElementById('bookingForm').reset();
+                    // No need to manually update the contact list; real-time listener will update it
+                    alert('Appointment booked successfully! We will contact you to confirm.');
+                })
+                .catch((error) => {
+                    alert('Failed to book appointment: ' + error.message);
+                });
+        }
+
+        // Quick action functions
+        function viewRecords() {
+            loadHealthRecords();
+            $('#recordsModal').modal('show');
+        }
+
+        function loadHealthRecords() {
+            // Load health stats summary
+            const summary = healthRecords.healthSummary;
+            const statsHTML = `
+                <div class="health-stat-card">
+                    <div class="health-stat-number">${healthRecords.treatmentHistory.length}</div>
+                    <div class="health-stat-label">Total Treatments</div>
+                </div>
+                <div class="health-stat-card">
+                    <div class="health-stat-number">${healthRecords.xrayRecords.length}</div>
+                    <div class="health-stat-label">X-Ray Records</div>
+                </div>
+                <div class="health-stat-card">
+                    <div class="health-stat-number">${healthRecords.prescriptions.length}</div>
+                    <div class="health-stat-label">Prescriptions</div>
+                </div>
+                <div class="health-stat-card">
+                    <div class="health-stat-number">${healthRecords.labResults.length}</div>
+                    <div class="health-stat-label">Lab Tests</div>
+                </div>
+                <div class="health-stat-card">
+                    <div class="health-stat-number">${summary.cavities}</div>
+                    <div class="health-stat-label">Cavities</div>
+                </div>
+                <div class="health-stat-card">
+                    <div class="health-stat-number">${summary.fillings}</div>
+                    <div class="health-stat-label">Fillings</div>
+                </div>
+            `;
+            document.getElementById('healthStatsSummary').innerHTML = statsHTML;
+
+            // Load patient info
+            const userData = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            const patientInfo = healthRecords.patientInfo;
+            patientInfo.name = userData.name || 'Patient';
+            
+            document.getElementById('patientInfo').innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Name:</strong> ${patientInfo.name}</p>
+                                <p><strong>Age:</strong> ${patientInfo.age} years</p>
+                                <p><strong>Gender:</strong> ${patientInfo.gender}</p>
+                                <p><strong>Blood Type:</strong> <span class="badge badge-info">${patientInfo.bloodType}</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Allergies:</strong> <span class="badge badge-warning">${patientInfo.allergies}</span></p>
+                                <p><strong>Emergency Contact:</strong> ${patientInfo.emergencyContact}</p>
+                                <p><strong>Insurance:</strong> ${patientInfo.insuranceProvider}</p>
+                                <p><strong>Policy #:</strong> ${patientInfo.policyNumber}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Last Visit:</strong> <span class="text-primary">${patientInfo.lastVisit}</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Next Visit:</strong> <span class="text-success">${patientInfo.nextVisit}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Load health summary with enhanced styling
+            document.getElementById('healthSummary').innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Overall Health:</strong> <span class="badge badge-success">${summary.overallHealth}</span></p>
+                                <p><strong>Dental Health:</strong> <span class="badge badge-warning">${summary.dentalHealth}</span></p>
+                                <p><strong>Gum Disease:</strong> <span class="badge badge-info">${summary.gumDisease}</span></p>
+                                <p><strong>Cancer Risk:</strong> <span class="badge badge-success">${summary.oralCancerRisk}</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Last Cleaning:</strong> ${summary.lastCleaning}</p>
+                                <p><strong>Cavities:</strong> <span class="badge badge-danger">${summary.cavities}</span></p>
+                                <p><strong>Fillings:</strong> <span class="badge badge-info">${summary.fillings}</span></p>
+                                <p><strong>Crowns:</strong> <span class="badge badge-primary">${summary.crowns}</span></p>
+                                <p><strong>Root Canals:</strong> <span class="badge badge-secondary">${summary.rootCanals}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Load treatment history with enhanced formatting
+            let treatmentHTML = '';
+            healthRecords.treatmentHistory.forEach(treatment => {
+                const statusClass = treatment.status === 'Completed' ? 'badge-success' : 
+                                  treatment.status === 'Pending' ? 'badge-warning' : 'badge-info';
+                
+                treatmentHTML += `
+                    <div class="card mb-3 border-left-${treatment.status === 'Completed' ? 'success' : 'warning'}">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">
+                                <span class="fa fa-stethoscope"></span> ${treatment.treatment}
+                            </h6>
+                            <span class="badge ${statusClass}">${treatment.status}</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Date:</strong> <span class="text-primary">${treatment.date}</span></p>
+                                    <p><strong>Doctor:</strong> <span class="text-info">${treatment.doctor}</span></p>
+                                    <p><strong>Cost:</strong> <span class="text-success">${treatment.cost}</span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Description:</strong> ${treatment.description}</p>
+                                    <p><strong>Follow-up:</strong> <span class="text-warning">${treatment.followUp}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('treatmentHistory').innerHTML = treatmentHTML || '<div class="text-center text-muted">No treatment history available.</div>';
+
+            // Load X-ray records with enhanced formatting
+            let xrayHTML = '';
+            healthRecords.xrayRecords.forEach(xray => {
+                const statusClass = xray.status === 'Normal' ? 'badge-success' : 
+                                  xray.status === 'Cavity Detected' ? 'badge-warning' : 'badge-danger';
+                
+                xrayHTML += `
+                    <div class="card mb-3">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">
+                                <span class="fa fa-image"></span> ${xray.type}
+                            </h6>
+                            <span class="badge ${statusClass}">${xray.status}</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Date:</strong> <span class="text-primary">${xray.date}</span></p>
+                                    <p><strong>Doctor:</strong> <span class="text-info">${xray.doctor}</span></p>
+                                    <p><strong>Image:</strong> <span class="text-muted">${xray.image}</span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Findings:</strong></p>
+                                    <p class="text-muted">${xray.findings}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('xrayRecords').innerHTML = xrayHTML || '<div class="text-center text-muted">No X-ray records available.</div>';
+
+            // Load prescriptions with enhanced formatting
+            let prescriptionHTML = '';
+            healthRecords.prescriptions.forEach(prescription => {
+                let medicationsHTML = '';
+                prescription.medications.forEach(med => {
+                    medicationsHTML += `
+                        <div class="border-left border-primary pl-3 mb-3 p-2 bg-light">
+                            <h6 class="text-primary">${med.name}</h6>
+                            <p class="mb-1"><small><strong>Dosage:</strong> ${med.dosage}</small></p>
+                            <p class="mb-1"><small><strong>Duration:</strong> ${med.duration}</small></p>
+                            <p class="mb-0"><small><strong>Purpose:</strong> ${med.purpose}</small></p>
+                        </div>
+                    `;
+                });
+                
+                prescriptionHTML += `
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h6 class="mb-0">
+                                <span class="fa fa-prescription"></span> Prescription - ${prescription.date}
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Doctor:</strong> <span class="text-info">${prescription.doctor}</span></p>
+                            <div class="medications">
+                                <h6>Medications:</h6>
+                                ${medicationsHTML}
+                            </div>
+                            <div class="mt-3">
+                                <p><strong>Notes:</strong></p>
+                                <p class="text-muted">${prescription.notes}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('prescriptionRecords').innerHTML = prescriptionHTML || '<div class="text-center text-muted">No prescriptions available.</div>';
+
+            // Load lab results with enhanced formatting
+            let labHTML = '';
+            healthRecords.labResults.forEach(lab => {
+                const resultClass = lab.result.includes('Normal') ? 'badge-success' : 'badge-warning';
+                
+                labHTML += `
+                    <div class="card mb-3">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">
+                                <span class="fa fa-flask"></span> ${lab.test}
+                            </h6>
+                            <span class="badge ${resultClass}">${lab.result}</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Date:</strong> <span class="text-primary">${lab.date}</span></p>
+                                    <p><strong>Doctor:</strong> <span class="text-info">${lab.doctor}</span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Notes:</strong></p>
+                                    <p class="text-muted">${lab.notes}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('labResults').innerHTML = labHTML || '<div class="text-center text-muted">No lab results available.</div>';
+
+            // Load doctor notes with enhanced formatting
+            let notesHTML = '';
+            healthRecords.doctorNotes.forEach(note => {
+                notesHTML += `
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h6 class="mb-0">
+                                <span class="fa fa-user-md"></span> Doctor Notes - ${note.date}
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Doctor:</strong> <span class="text-info">${note.doctor}</span></p>
+                            <div class="mt-3">
+                                <p><strong>Notes:</strong></p>
+                                <p class="text-muted">${note.notes}</p>
+                            </div>
+                            <div class="mt-3">
+                                <p><strong>Follow-up:</strong></p>
+                                <p class="text-warning">${note.followUp}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('doctorNotes').innerHTML = notesHTML || '<div class="text-center text-muted">No doctor notes available.</div>';
+
+            // Add real-time update indicator
+            const updateIndicator = document.createElement('div');
+            updateIndicator.className = 'text-center text-muted mt-3';
+            updateIndicator.innerHTML = `
+                <small>
+                    <span class="fa fa-clock-o"></span> Last updated: ${new Date().toLocaleTimeString()}
+                    <button class="refresh-btn ml-2" onclick="refreshHealthRecords()" title="Refresh">
+                        <span class="fa fa-refresh"></span>
+                    </button>
+                </small>
+            `;
+            
+            // Add to modal body
+            const modalBody = document.querySelector('#recordsModal .modal-body');
+            const existingIndicator = modalBody.querySelector('.text-center.text-muted');
+            if (existingIndicator) {
+                existingIndicator.remove();
+            }
+            modalBody.appendChild(updateIndicator);
+
+            // Show real-time indicator
+            showRealTimeIndicator();
+        }
+
+        // Show real-time indicator
+        function showRealTimeIndicator() {
+            // Remove existing indicator
+            const existingIndicator = document.querySelector('.real-time-indicator');
+            if (existingIndicator) {
+                existingIndicator.remove();
+            }
+
+            // Create new indicator
+            const indicator = document.createElement('div');
+            indicator.className = 'real-time-indicator';
+            indicator.innerHTML = `
+                <span class="fa fa-wifi"></span> Live Updates Active
+            `;
+            document.body.appendChild(indicator);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                if (indicator.parentNode) {
+                    indicator.remove();
+                }
+            }, 3000);
+        }
+
+        // Refresh health records function
+        function refreshHealthRecords() {
+            // Show loading state
+            const refreshBtn = document.querySelector('.refresh-btn');
+            const originalHTML = refreshBtn.innerHTML;
+            refreshBtn.innerHTML = '<span class="fa fa-spinner fa-spin"></span>';
+            refreshBtn.disabled = true;
+
+            // Update records
+            updateHealthRecords();
+            loadHealthRecords();
+
+            // Reset button after 1 second
+            setTimeout(() => {
+                refreshBtn.innerHTML = originalHTML;
+                refreshBtn.disabled = false;
+            }, 1000);
+        }
+
+        function downloadRecords() {
+            // Create a comprehensive health records file
+            const userData = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            const patientName = userData.name || 'Patient';
+            
+            let content = `HEALTH RECORDS - denTallo Dental Clinic\n`;
+            content += `Patient: ${patientName}\n`;
+            content += `Generated on: ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}\n`;
+            content += `='.repeat(50)}\n\n`;
+            
+            content += `PATIENT INFORMATION:\n`;
+            content += `Name: ${patientName}\n`;
+            content += `Age: ${healthRecords.patientInfo.age} years\n`;
+            content += `Gender: ${healthRecords.patientInfo.gender}\n`;
+            content += `Blood Type: ${healthRecords.patientInfo.bloodType}\n`;
+            content += `Allergies: ${healthRecords.patientInfo.allergies}\n`;
+            content += `Emergency Contact: ${healthRecords.patientInfo.emergencyContact}\n`;
+            content += `Insurance: ${healthRecords.patientInfo.insuranceProvider}\n`;
+            content += `Policy Number: ${healthRecords.patientInfo.policyNumber}\n`;
+            content += `Last Visit: ${healthRecords.patientInfo.lastVisit}\n`;
+            content += `Next Visit: ${healthRecords.patientInfo.nextVisit}\n\n`;
+            
+            content += `HEALTH SUMMARY:\n`;
+            content += `Overall Health: ${healthRecords.healthSummary.overallHealth}\n`;
+            content += `Dental Health: ${healthRecords.healthSummary.dentalHealth}\n`;
+            content += `Gum Disease: ${healthRecords.healthSummary.gumDisease}\n`;
+            content += `Oral Cancer Risk: ${healthRecords.healthSummary.oralCancerRisk}\n`;
+            content += `Last Cleaning: ${healthRecords.healthSummary.lastCleaning}\n`;
+            content += `Cavities: ${healthRecords.healthSummary.cavities}\n`;
+            content += `Fillings: ${healthRecords.healthSummary.fillings}\n`;
+            content += `Crowns: ${healthRecords.healthSummary.crowns}\n`;
+            content += `Root Canals: ${healthRecords.healthSummary.rootCanals}\n\n`;
+            
+            content += `TREATMENT HISTORY:\n`;
+            healthRecords.treatmentHistory.forEach(treatment => {
+                content += `${treatment.date} - ${treatment.treatment}\n`;
+                content += `Doctor: ${treatment.doctor}\n`;
+                content += `Description: ${treatment.description}\n`;
+                content += `Cost: ${treatment.cost}\n`;
+                content += `Status: ${treatment.status}\n`;
+                content += `Follow-up: ${treatment.followUp}\n\n`;
+            });
+            
+            content += `X-RAY RECORDS:\n`;
+            healthRecords.xrayRecords.forEach(xray => {
+                content += `${xray.date} - ${xray.type}\n`;
+                content += `Doctor: ${xray.doctor}\n`;
+                content += `Findings: ${xray.findings}\n`;
+                content += `Status: ${xray.status}\n\n`;
+            });
+            
+            content += `PRESCRIPTIONS:\n`;
+            healthRecords.prescriptions.forEach(prescription => {
+                content += `${prescription.date} - Prescription\n`;
+                content += `Doctor: ${prescription.doctor}\n`;
+                content += `Medications:\n`;
+                prescription.medications.forEach(med => {
+                    content += `  - ${med.name}\n`;
+                    content += `    Dosage: ${med.dosage}\n`;
+                    content += `    Duration: ${med.duration}\n`;
+                    content += `    Purpose: ${med.purpose}\n`;
+                });
+                content += `Notes: ${prescription.notes}\n\n`;
+            });
+            
+            content += `LAB RESULTS:\n`;
+            healthRecords.labResults.forEach(lab => {
+                content += `${lab.date} - ${lab.test}\n`;
+                content += `Doctor: ${lab.doctor}\n`;
+                content += `Result: ${lab.result}\n`;
+                content += `Notes: ${lab.notes}\n\n`;
+            });
+            
+            content += `DOCTOR NOTES:\n`;
+            healthRecords.doctorNotes.forEach(note => {
+                content += `${note.date} - Doctor Notes\n`;
+                content += `Doctor: ${note.doctor}\n`;
+                content += `Notes: ${note.notes}\n`;
+                content += `Follow-up: ${note.followUp}\n\n`;
+            });
+            
+            content += `VITAL SIGNS:\n`;
+            healthRecords.vitalSigns.forEach(vital => {
+                content += `${vital.date}:\n`;
+                content += `  Blood Pressure: ${vital.bloodPressure}\n`;
+                content += `  Heart Rate: ${vital.heartRate} bpm\n`;
+                content += `  Temperature: ${vital.temperature}\n`;
+                content += `  Weight: ${vital.weight}\n\n`;
+            });
+            
+            // Create and download file
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${patientName}_Complete_Health_Records_${new Date().toISOString().split('T')[0]}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            alert('Complete health records downloaded successfully!');
+        }
+
+        function contactClinic() {
+            window.open('tel:+8801712345678', '_self');
+        }
+
+        function getDirections() {
+            const address = 'House 12, Road 5, Dhanmondi, Dhaka, Bangladesh';
+            const encodedAddress = encodeURIComponent(address);
+            window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
+        }
+
+        function payBill() {
+            loadBillingData();
+            $('#paymentModal').modal('show');
+        }
+
+        function loadBillingData() {
+            // Load billing summary
+            document.getElementById('billingSummary').innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Total Outstanding:</strong> <span class="text-danger">${billingData.totalOutstanding} Tk</span></p>
+                                <p><strong>Total Paid:</strong> <span class="text-success">${billingData.totalPaid} Tk</span></p>
+                                <p><strong>Bills Count:</strong> ${billingData.outstandingBills.length}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Last Payment:</strong> ${billingData.paymentHistory[0].date}</p>
+                                <p><strong>Payment Method:</strong> ${billingData.paymentHistory[0].method}</p>
+                                <p><strong>Account Status:</strong> <span class="badge badge-warning">Active</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Load payment summary
+            document.getElementById('paymentSummary').innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <p><strong>Outstanding Amount:</strong></p>
+                        <h4 class="text-danger">${billingData.totalOutstanding} Tk</h4>
+                        <p><strong>Due Date:</strong> ${billingData.outstandingBills[0].dueDate}</p>
+                        <button class="btn btn-primary btn-sm" onclick="selectAllBills()">Pay All Bills</button>
+                    </div>
+                </div>
+            `;
+
+            // Load outstanding bills
+            let billsHTML = '';
+            billingData.outstandingBills.forEach(bill => {
+                const isOverdue = new Date(bill.dueDate) < new Date();
+                billsHTML += `
+                    <div class="card mb-3">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">${bill.service}</h6>
+                            <div>
+                                <span class="badge badge-${isOverdue ? 'danger' : 'warning'}">${isOverdue ? 'Overdue' : 'Pending'}</span>
+                                <input type="checkbox" class="ml-2 bill-checkbox" value="${bill.id}" data-amount="${bill.amount}">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Bill ID:</strong> ${bill.id}</p>
+                                    <p><strong>Date:</strong> ${bill.date}</p>
+                                    <p><strong>Doctor:</strong> ${bill.doctor}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Amount:</strong> <span class="text-danger">${bill.amount} Tk</span></p>
+                                    <p><strong>Due Date:</strong> ${bill.dueDate}</p>
+                                    <p><strong>Status:</strong> ${bill.status}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('outstandingBills').innerHTML = billsHTML;
+
+            // Load payment history
+            let historyHTML = '';
+            billingData.paymentHistory.forEach(payment => {
+                historyHTML += `
+                    <div class="card mb-3">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">${payment.service}</h6>
+                            <span class="badge badge-success">${payment.status}</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Payment ID:</strong> ${payment.id}</p>
+                                    <p><strong>Date:</strong> ${payment.date}</p>
+                                    <p><strong>Method:</strong> ${payment.method}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Amount:</strong> <span class="text-success">${payment.amount} Tk</span></p>
+                                    <p><strong>Transaction ID:</strong> ${payment.transactionId}</p>
+                                    <p><strong>Status:</strong> ${payment.status}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('paymentHistory').innerHTML = historyHTML;
+
+            // Load payment details
+            updatePaymentDetails();
+        }
+
+        function updatePaymentDetails() {
+            const selectedBills = document.querySelectorAll('.bill-checkbox:checked');
+            let totalAmount = 0;
+            let selectedServices = [];
+
+            selectedBills.forEach(bill => {
+                totalAmount += parseInt(bill.dataset.amount);
+                selectedServices.push(bill.value);
+            });
+
+            document.getElementById('paymentDetails').innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <p><strong>Selected Bills:</strong> ${selectedServices.length}</p>
+                        <p><strong>Total Amount:</strong></p>
+                        <h4 class="text-primary">${totalAmount} Tk</h4>
+                        <p><strong>Processing Fee:</strong> 50 Tk</p>
+                        <hr>
+                        <p><strong>Total Payable:</strong></p>
+                        <h5 class="text-success">${totalAmount + 50} Tk</h5>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectAllBills() {
+            const checkboxes = document.querySelectorAll('.bill-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = true;
+            });
+            updatePaymentDetails();
+        }
+
+        function processPayment() {
+            const selectedBills = document.querySelectorAll('.bill-checkbox:checked');
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+            if (selectedBills.length === 0) {
+                alert('Please select at least one bill to pay.');
+                return;
+            }
+
+            // Validate payment method specific fields
+            if (paymentMethod === 'credit') {
+                const cardNumber = document.getElementById('cardNumber').value;
+                const expiryDate = document.getElementById('expiryDate').value;
+                const cvv = document.getElementById('cvv').value;
+                const cardHolderName = document.getElementById('cardHolderName').value;
+
+                if (!cardNumber || !expiryDate || !cvv || !cardHolderName) {
+                    alert('Please fill in all credit card details.');
+                    return;
+                }
+            } else if (paymentMethod === 'mobile') {
+                const mobileNumber = document.getElementById('mobileNumber').value;
+                const bankName = document.getElementById('bankName').value;
+
+                if (!mobileNumber || !bankName) {
+                    alert('Please fill in mobile banking details.');
+                    return;
+                }
+            }
+
+            // Simulate payment processing
+            const totalAmount = Array.from(selectedBills).reduce((sum, bill) => sum + parseInt(bill.dataset.amount), 0) + 50;
+            
+            // Show processing animation
+            const payButton = document.querySelector('button[onclick="processPayment()"]');
+            const originalText = payButton.innerHTML;
+            payButton.innerHTML = '<span class="fa fa-spinner fa-spin"></span> Processing...';
+            payButton.disabled = true;
+
+            setTimeout(() => {
+                // Simulate successful payment
+                alert(`Payment of ${totalAmount} Tk processed successfully!\nTransaction ID: TXN-${Date.now()}`);
+                
+                // Update billing data (in real app, this would update the database)
+                selectedBills.forEach(bill => {
+                    const billId = bill.value;
+                    const billIndex = billingData.outstandingBills.findIndex(b => b.id === billId);
+                    if (billIndex !== -1) {
+                        const paidBill = billingData.outstandingBills.splice(billIndex, 1)[0];
+                        billingData.paymentHistory.unshift({
+                            id: `PAY-${Date.now()}`,
+                            date: new Date().toISOString().split('T')[0],
+                            service: paidBill.service,
+                            amount: paidBill.amount,
+                            method: paymentMethod === 'credit' ? 'Credit Card' : 
+                                   paymentMethod === 'mobile' ? 'Mobile Banking' : 'Bank Transfer',
+                            status: 'Completed',
+                            transactionId: `TXN-${Date.now()}`
+                        });
+                    }
+                });
+
+                // Update totals
+                billingData.totalOutstanding = billingData.outstandingBills.reduce((sum, bill) => sum + bill.amount, 0);
+                billingData.totalPaid += totalAmount - 50;
+
+                // Reset form and close modal
+                document.getElementById('paymentForm').reset();
+                $('#paymentModal').modal('hide');
+                
+                // Reload billing data
+                loadBillingData();
+                
+                // Reset button
+                payButton.innerHTML = originalText;
+                payButton.disabled = false;
+            }, 3000);
+        }
+
+        function downloadInvoice() {
+            const userData = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            const patientName = userData.name || 'Patient';
+            
+            let content = `INVOICE - denTallo Dental Clinic\n`;
+            content += `Generated on: ${new Date().toLocaleDateString()}\n\n`;
+            content += `Patient: ${patientName}\n`;
+            content += `Date: ${new Date().toLocaleDateString()}\n\n`;
+            
+            content += `OUTSTANDING BILLS:\n`;
+            billingData.outstandingBills.forEach(bill => {
+                content += `${bill.id} - ${bill.service} - ${bill.amount} Tk\n`;
+            });
+            
+            content += `\nTotal Outstanding: ${billingData.totalOutstanding} Tk\n`;
+            content += `Total Paid: ${billingData.totalPaid} Tk\n`;
+            
+            // Create and download file
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${patientName}_Invoice.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            alert('Invoice downloaded successfully!');
+        }
+
+        function getHelp() {
+            alert('For immediate assistance, please call +880 17 1234 5678 or email info@dentallo.com.bd');
+        }
+
+       
+       
+        
+    </script>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

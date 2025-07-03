@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Dental Health Medical Category Flat Bootstrap Responsive Website Template | Contact :: W3layouts</title>
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Dental Health Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+
+	<!-- css files -->
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' /><!-- custom css -->
+	<link href="css/font-awesome.min.css" rel="stylesheet"><!-- fontawesome css -->
+	<!-- //css files -->
+
+	<!-- google fonts -->
+	<link
+		href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+		rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&amp;subset=latin-ext"
+		rel="stylesheet">
+	<!-- //google fonts -->
+
+	<!-- jsPDF for PDF generation -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
+
+	<!-- Firebase App (the core Firebase SDK) -->
+	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+	<!-- Firebase Analytics -->
+	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+	<script>
+		// Your web app's Firebase configuration
+		const firebaseConfig = {
+			apiKey: "AIzaSyD_FYW1O-iFXXTfd4fgYmLi6G1lhAaK_B8",
+			authDomain: "dentello-bf49a.firebaseapp.com",
+			projectId: "dentello-bf49a",
+			storageBucket: "dentello-bf49a.appspot.com",
+			messagingSenderId: "209346364277",
+			appId: "1:209346364277:web:a0cd05825d193bb85d093c",
+			measurementId: "G-DERY2TQFE4"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		if (firebase.analytics) {
+			firebase.analytics();
+		}
+	</script>
+	<!-- End Firebase -->
+
+	<style>
+		/* contact Booking System Styles */
+		.contact-booking-container {
+			background: #fff;
+			border-radius: 15px;
+			padding: 30px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+		}
+
+		.booking-step {
+			display: none;
+			animation: fadeIn 0.5s ease-in-out;
+		}
+
+		.booking-step.active {
+			display: block;
+		}
+
+		@keyframes fadeIn {
+			from { opacity: 0; transform: translateY(20px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		.booking-step h4 {
+			color: #333;
+			font-weight: 600;
+			border-bottom: 2px solid #007bff;
+			padding-bottom: 10px;
+			margin-bottom: 25px;
+		}
+
+		.booking-step h4 .fa {
+			color: #007bff;
+			margin-right: 10px;
+		}
+
+		/* Service Cards */
+		.service-card {
+			background: #f8f9fa;
+			border: 2px solid #e9ecef;
+			border-radius: 12px;
+			padding: 20px;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			height: 100%;
+		}
+
+		.service-card:hover {
+			border-color: #007bff;
+			transform: translateY(-5px);
+			box-shadow: 0 10px 25px rgba(0, 123, 255, 0.15);
+		}
+
+		.service-card.selected {
+			border-color: #007bff;
+			background: linear-gradient(135deg, #007bff, #0056b3);
+			color: white;
+		}
+
+		.service-card.selected .price {
+			color: #fff;
+		}
+
+		.service-icon {
+			font-size: 40px;
+			color: #007bff;
+			margin-bottom: 15px;
+		}
+
+		.service-card.selected .service-icon {
+			color: white;
+		}
+
+		.service-card h5 {
+			font-weight: 600;
+			margin-bottom: 10px;
+		}
+
+		.service-card p {
+			font-size: 14px;
+			margin-bottom: 15px;
+			opacity: 0.8;
+		}
+
+		.price {
+			font-size: 18px;
+			font-weight: 700;
+			color: #007bff;
+		}
+
+		/* Doctor Cards */
+		.doctor-card {
+			background: #f8f9fa;
+			border: 2px solid #e9ecef;
+			border-radius: 12px;
+			padding: 20px;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			height: 100%;
+		}
+
+		.doctor-card:hover {
+			border-color: #007bff;
+			transform: translateY(-5px);
+			box-shadow: 0 10px 25px rgba(0, 123, 255, 0.15);
+		}
+
+		.doctor-card.selected {
+			border-color: #007bff;
+			background: linear-gradient(135deg, #007bff, #0056b3);
+			color: white;
+		}
+
+		.doctor-avatar {
+			width: 60px;
+			height: 60px;
+			background: #007bff;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto 15px;
+			font-size: 24px;
+			color: white;
+		}
+
+		.doctor-card.selected .doctor-avatar {
+			background: white;
+			color: #007bff;
+		}
+
+		.doctor-card h5 {
+			font-weight: 600;
+			margin-bottom: 5px;
+		}
+
+		.specialty {
+			color: #007bff;
+			font-weight: 500;
+			margin-bottom: 5px;
+		}
+
+		.doctor-card.selected .specialty {
+			color: rgba(255, 255, 255, 0.9);
+		}
+
+		.availability {
+			font-size: 14px;
+			color: #6c757d;
+			margin-bottom: 10px;
+		}
+
+		.doctor-card.selected .availability {
+			color: rgba(255, 255, 255, 0.8);
+		}
+
+		.rating {
+			font-size: 14px;
+		}
+
+		.rating .fa {
+			color: #ffc107;
+		}
+
+		.doctor-card.selected .rating .fa {
+			color: #fff;
+		}
+
+		/* Calendar Styles */
+		.calendar-container {
+			background: #f8f9fa;
+			border-radius: 12px;
+			padding: 20px;
+		}
+
+		.calendar-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+
+		.calendar-header h5 {
+			margin: 0;
+			font-weight: 600;
+			color: #333;
+		}
+
+		.calendar-grid {
+			display: grid;
+			grid-template-columns: repeat(7, 1fr);
+			gap: 5px;
+		}
+
+		.calendar-day {
+			padding: 10px;
+			text-align: center;
+			border-radius: 8px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			font-weight: 500;
+		}
+
+		.calendar-day:hover {
+			background: #e3f2fd;
+		}
+
+		.calendar-day.available {
+			background: #d4edda;
+			color: #155724;
+		}
+
+		.calendar-day.selected {
+			background: #007bff;
+			color: white;
+		}
+
+		.calendar-day.disabled {
+			background: #f8f9fa;
+			color: #adb5bd;
+			cursor: not-allowed;
+		}
+
+		.calendar-day.today {
+			border: 2px solid #007bff;
+		}
+
+		/* Time Slots */
+		.time-slots-container {
+			background: #f8f9fa;
+			border-radius: 12px;
+			padding: 20px;
+		}
+
+		.time-slots {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 10px;
+		}
+
+		.time-slot {
+			padding: 12px;
+			background: white;
+			border: 2px solid #e9ecef;
+			border-radius: 8px;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			font-weight: 500;
+		}
+
+		.time-slot:hover {
+			border-color: #007bff;
+			background: #e3f2fd;
+		}
+
+		.time-slot.selected {
+			background: #007bff;
+			color: white;
+			border-color: #007bff;
+		}
+
+		.time-slot.disabled {
+			background: #f8f9fa;
+			color: #adb5bd;
+			cursor: not-allowed;
+		}
+
+		/* Summary Card */
+		.summary-card {
+			background: #f8f9fa;
+			border-radius: 12px;
+			padding: 25px;
+			border-left: 4px solid #007bff;
+		}
+
+		.summary-card h5 {
+			color: #333;
+			font-weight: 600;
+			margin-bottom: 20px;
+		}
+
+		.summary-item {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 15px;
+			padding-bottom: 10px;
+			border-bottom: 1px solid #e9ecef;
+		}
+
+		.summary-item:last-child {
+			border-bottom: none;
+			margin-bottom: 0;
+		}
+
+		.summary-label {
+			font-weight: 500;
+			color: #6c757d;
+		}
+
+		.summary-value {
+			font-weight: 600;
+			color: #333;
+		}
+
+		/* Success Message */
+		.success-message {
+			padding: 40px 20px;
+		}
+
+		.success-icon {
+			font-size: 80px;
+			color: #28a745;
+			margin-bottom: 20px;
+		}
+
+		.success-message h4 {
+			color: #28a745;
+			font-weight: 600;
+			margin-bottom: 15px;
+		}
+
+		.success-message p {
+			color: #6c757d;
+			margin-bottom: 30px;
+		}
+
+		.contact-details {
+			background: #f8f9fa;
+			border-radius: 12px;
+			padding: 20px;
+			margin-bottom: 30px;
+			text-align: left;
+		}
+
+		.action-buttons {
+			display: flex;
+			gap: 15px;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+
+		.btn-primary {
+			background: #007bff;
+			border-color: #007bff;
+		}
+
+		.btn-primary:hover {
+			background: #0056b3;
+			border-color: #0056b3;
+		}
+
+		/* Button Styles */
+		.btn-secondary {
+			background: #6c757d;
+			border-color: #6c757d;
+			margin-right: 10px;
+		}
+
+		.btn-secondary:hover {
+			background: #5a6268;
+			border-color: #545b62;
+		}
+
+		.btn-success {
+			background: #28a745;
+			border-color: #28a745;
+		}
+
+		.btn-success:hover {
+			background: #218838;
+			border-color: #1e7e34;
+		}
+
+		/* Progress Indicator */
+		.booking-progress {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 30px;
+			padding: 0 20px;
+		}
+
+		.progress-step {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			position: relative;
+		}
+
+		.progress-step::after {
+			content: '';
+			position: absolute;
+			top: 15px;
+			left: 50%;
+			width: 100%;
+			height: 2px;
+			background: #e9ecef;
+			z-index: 1;
+		}
+
+		.progress-step:last-child::after {
+			display: none;
+		}
+
+		.progress-step.active::after {
+			background: #007bff;
+		}
+
+		.progress-circle {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background: #e9ecef;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 14px;
+			font-weight: 600;
+			color: #6c757d;
+			position: relative;
+			z-index: 2;
+		}
+
+		.progress-step.active .progress-circle {
+			background: #007bff;
+			color: white;
+		}
+
+		.progress-step.completed .progress-circle {
+			background: #28a745;
+			color: white;
+		}
+
+		.progress-label {
+			font-size: 12px;
+			color: #6c757d;
+			margin-top: 5px;
+			text-align: center;
+		}
+
+		.progress-step.active .progress-label {
+			color: #007bff;
+			font-weight: 600;
+		}
+
+		/* Responsive Design */
+		@media (max-width: 768px) {
+			.contact-booking-container {
+				padding: 20px;
+			}
+
+			.time-slots {
+				grid-template-columns: 1fr;
+			}
+
+			.calendar-grid {
+				gap: 3px;
+			}
+
+			.calendar-day {
+				padding: 8px 5px;
+				font-size: 14px;
+			}
+
+			.service-card, .doctor-card {
+				margin-bottom: 15px;
+			}
+		}
+
+		/* Loading States */
+		.loading {
+			position: relative;
+			opacity: 0.7;
+			pointer-events: none;
+		}
+
+		.loading::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 20px;
+			height: 20px;
+			margin: -10px 0 0 -10px;
+			border: 2px solid #f3f3f3;
+			border-top: 2px solid #007bff;
+			border-radius: 50%;
+			animation: spin 1s linear infinite;
+		}
+
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<!-- top header -->
+	<div class="header-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<ul class="d-lg-flex header-w3_pvt">
+						<li class="mr-lg-3">
+							<span class="fa fa-envelope-open"></span>
+							<a href="mailto:info@example.com" class="">info@dentallo.com.bd</a>
+						</li>
+						<li>
+							<span class="fa fa-phone"></span>
+							<p class="d-inline">Call Us +880 17 1234 5678</p>
+						</li>
+					</ul>
+				</div>
+				<div class="col-sm-6 header-right-w3_pvt">
+					<ul class="d-lg-flex header-w3_pvt justify-content-lg-end">
+						<li class="mr-lg-3">
+							<span class=""><span class="fa fa-clock-o"></span>Mon - Fri : 8:30am to 9:30pm</span>
+						</li>
+						<li class="">
+							<span class=""><span class="fa fa-clock-o"></span>Sat & Sun : 9:00am to 6:00pm</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //top header -->
+
+	<!-- //header -->
+	<header class="py-3">
+		<div class="container">
+			<div id="logo">
+				<h1> <a href="index.html"><span class="fa fa-stethoscope" aria-hidden="true"></span>denTallo</a></h1>
+			</div>
+			<!-- nav -->
+			<nav class="d-lg-flex">
+
+				<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+				<input type="checkbox" id="drop" />
+				<ul class="menu mt-2 ml-auto">
+					<li class="active"><a href="index.html">Home</a></li>
+					<li class=""><a href="about.html">About Us</a></li>
+					<li class=""><a href="services.html">Services</a></li>
+					<li class=""><a href="gallery.html">Gallery</a></li>
+					<li class=""><a href="blog.html">Blog</a></li>
+					<li class=""><a href="contact.html">contact </a></li>
+				</ul>
+				<div class="login-icon ml-2">
+					<a class="user" href="login.html"> Login</a>
+				</div>
+			</nav>
+			<div class="clear"></div>
+			<!-- //nav -->
+		</div>
+	</header>
+	<!-- //header -->
+
+	<!-- banner -->
+	<div class="innerpage-banner" id="home">
+		<div class="inner-page-layer">
+		</div>
+	</div>
+	<!-- //banner -->
+
+	<!-- contact -->
+	<section class="mail pt-lg-5 pt-4">
+		<div class="container pt-lg-5">
+			<h2 class="heading text-center mb-sm-5 mb-4">Book Your contact</h2>
+			<div class="row agileinfo_mail_grids">
+				<div class="col-lg-8 agileinfo_mail_grid_right">
+					<!-- contact Booking Form -->
+					<div class="contact-booking-container">
+						<!-- Step 1: Patient Information -->
+						<div class="booking-step active" id="step1">
+							<h4 class="mb-4"><span class="fa fa-user"></span> Patient Information</h4>
+							<form id="patientInfoForm">
+						<div class="row">
+							<div class="col-md-6 wthree_contact_left_grid pr-md-0">
+								<div class="form-group">
+											<input type="text" name="fullName" id="fullName" class="form-control" placeholder="Full Name" required="">
+								</div>
+								<div class="form-group">
+											<input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required="">
+								</div>
+							</div>
+							<div class="col-md-6 wthree_contact_left_grid">
+								<div class="form-group">
+											<input type="tel" name="phone" id="phone" class="form-control" placeholder="Phone Number" required="">
+								</div>
+								<div class="form-group">
+											<input type="date" name="dateOfBirth" id="dateOfBirth" class="form-control" placeholder="Date of Birth" required="">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+											<textarea name="medicalHistory" id="medicalHistory" placeholder="Any medical conditions or allergies we should know about?" class="form-control" rows="3"></textarea>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="submit-buttons">
+											<button type="button" class="btn" onclick="nextStep(2)">Next: Select Service</button>
+								</div>
+							</div>
+						</div>
+					</form>
+						</div>
+
+						<!-- Step 2: Service Selection -->
+						<div class="booking-step" id="step2">
+							<h4 class="mb-4"><span class="fa fa-stethoscope"></span> Select Service</h4>
+							<div class="service-selection">
+								<div class="row">
+									<div class="col-md-6 mb-3">
+										<div class="service-card" data-service="checkup">
+											<div class="service-icon">
+												<span class="fa fa-heartbeat"></span>
+											</div>
+											<h5>Regular Check-up</h5>
+											<p>Comprehensive dental examination and cleaning</p>
+											<span class="price">৳1,000</span>
+										</div>
+									</div>
+									<div class="col-md-6 mb-3">
+										<div class="service-card" data-service="whitening">
+											<div class="service-icon">
+												<span class="fa fa-smile-o"></span>
+											</div>
+											<h5>Teeth Whitening</h5>
+											<p>Professional teeth whitening treatment</p>
+											<span class="price">৳5,000</span>
+										</div>
+									</div>
+									<div class="col-md-6 mb-3">
+										<div class="service-card" data-service="rootcanal">
+											<div class="service-icon">
+												<span class="fa fa-wrench"></span>
+											</div>
+											<h5>Root Canal</h5>
+											<p>Advanced root canal treatment</p>
+											<span class="price">৳8,000</span>
+										</div>
+									</div>
+									<div class="col-md-6 mb-3">
+										<div class="service-card" data-service="emergency">
+											<div class="service-icon">
+												<span class="fa fa-ambulance"></span>
+											</div>
+											<h5>Emergency Care</h5>
+											<p>Urgent dental care and treatment</p>
+											<span class="price">৳2,500</span>
+										</div>
+									</div>
+								</div>
+								<div class="row mt-4">
+									<div class="col-md-12">
+										<div class="submit-buttons">
+											<button type="button" class="btn btn-secondary" onclick="prevStep(1)">Previous</button>
+											<button type="button" class="btn" onclick="nextStep(3)">Next: Select Doctor</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Step 3: Doctor Selection -->
+						<div class="booking-step" id="step3">
+							<h4 class="mb-4"><span class="fa fa-user-md"></span> Select Doctor</h4>
+							<div class="doctor-selection">
+								<div class="row">
+									<div class="col-md-6 mb-3">
+										<div class="doctor-card" data-doctor="dr-habibur">
+											<div class="doctor-avatar">
+												<span class="fa fa-user-md"></span>
+											</div>
+											<h5>Dr. Md Habibur Rahman</h5>
+											<p class="specialty">Orthodontist</p>
+											<p class="availability">Available: Mon, Wed, Fri</p>
+											<div class="rating">
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span>(4.9)</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6 mb-3">
+										<div class="doctor-card" data-doctor="dr-afroja">
+											<div class="doctor-avatar">
+												<span class="fa fa-user-md"></span>
+											</div>
+											<h5>Dr. Afroja Noor</h5>
+											<p class="specialty">Orthodontist</p>
+											<p class="availability">Available: Tue, Thu, Sat</p>
+											<div class="rating">
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span>(4.8)</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6 mb-3">
+										<div class="doctor-card" data-doctor="dr-arifur">
+											<div class="doctor-avatar">
+												<span class="fa fa-user-md"></span>
+											</div>
+											<h5>Dr. Arifur Rahman</h5>
+											<p class="specialty">Orthodontist</p>
+											<p class="availability">Available: Mon, Tue, Thu</p>
+											<div class="rating">
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star-o"></span>
+												<span>(4.7)</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6 mb-3">
+										<div class="doctor-card" data-doctor="dr-samira">
+											<div class="doctor-avatar">
+												<span class="fa fa-user-md"></span>
+											</div>
+											<h5>Dr. Samira Khan</h5>
+											<p class="specialty">Orthodontist</p>
+											<p class="availability">Available: Wed, Fri, Sat</p>
+											<div class="rating">
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span>(4.9)</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row mt-4">
+									<div class="col-md-12">
+										<div class="submit-buttons">
+											<button type="button" class="btn btn-secondary" onclick="prevStep(2)">Previous</button>
+											<button type="button" class="btn" onclick="nextStep(4)">Next: Select Date & Time</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Step 4: Date & Time Selection -->
+						<div class="booking-step" id="step4">
+							<h4 class="mb-4"><span class="fa fa-calendar"></span> Select Date & Time</h4>
+							<div class="datetime-selection">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="calendar-container">
+											<div class="calendar-header">
+												<button type="button" class="btn btn-sm" onclick="previousMonth()">
+													<span class="fa fa-chevron-left"></span>
+												</button>
+												<h5 id="currentMonth">December 2024</h5>
+												<button type="button" class="btn btn-sm" onclick="nextMonth()">
+													<span class="fa fa-chevron-right"></span>
+												</button>
+											</div>
+											<div class="calendar-grid" id="calendarGrid">
+												<!-- Calendar will be generated by JavaScript -->
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="time-slots-container">
+											<h5>Available Time Slots</h5>
+											<div class="time-slots" id="timeSlots">
+												<!-- Time slots will be generated by JavaScript -->
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row mt-4">
+									<div class="col-md-12">
+										<div class="submit-buttons">
+											<button type="button" class="btn btn-secondary" onclick="prevStep(3)">Previous</button>
+											<button type="button" class="btn" onclick="nextStep(5)">Next: Review & Confirm</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Step 5: Review & Confirmation -->
+						<div class="booking-step" id="step5">
+							<h4 class="mb-4"><span class="fa fa-check-circle"></span> Review & Confirm</h4>
+							<div class="booking-summary">
+								<div class="summary-card">
+									<h5>contact Summary</h5>
+									<div class="summary-details" id="contactummary">
+										<!-- Summary will be populated by JavaScript -->
+									</div>
+								</div>
+								<div class="row mt-4">
+									<div class="col-md-12">
+										<div class="submit-buttons">
+											<button type="button" class="btn btn-secondary" onclick="prevStep(4)">Previous</button>
+											<button type="button" class="btn btn-success" onclick="confirmcontact()">Confirm contact</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Success Message -->
+						<div class="booking-step" id="successStep">
+							<div class="success-message text-center">
+								<span class="fa fa-check-circle success-icon"></span>
+								<h4>contact Confirmed!</h4>
+								<p>Your contact has been successfully scheduled. You will receive a confirmation email and SMS shortly.</p>
+								<div class="contact-details" id="finalcontactDetails">
+									<!-- Final details will be populated by JavaScript -->
+								</div>
+								<div class="action-buttons">
+									<button type="button" class="btn btn-primary" onclick="downloadcontactPDF()">
+										<span class="fa fa-download"></span> Download PDF
+									</button>
+									<button type="button" class="btn" onclick="resetBooking()">Book Another contact</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mt-lg-0 mt-4 contact-info">
+					<h4 class="mb-4">Address Information</h4>
+					<p><span class="fa mr-2 fa-map-marker"></span>House 12, Road 5, Dhanmondi, Dhaka, Bangladesh</p>
+					<p class="phone py-2"><span class="fa mr-2 fa-phone"></span> +880 17 1234 5678 </p>
+					<p><span class="fa mr-2 fa-envelope"></span><a href="mailto:info@dentallo.com.bd">info@dentallo.com.bd</a></p>
+
+					<h4 class="my-4">Quick Contact</h4>
+					<p class="phone"><span class="fa mr-2 fa-phone"></span>Call us at +880 17 1234 5678 </p>
+					
+					<h4 class="my-4">Office Hours</h4>
+					<p><span class="fa mr-2 fa-clock-o"></span>Monday - Friday: 8:30 AM - 9:30 PM</p>
+					<p><span class="fa mr-2 fa-clock-o"></span>Saturday - Sunday: 9:00 AM - 6:00 PM</p>
+					
+					<h4 class="my-4">Emergency Care</h4>
+					<p><span class="fa mr-2 fa-ambulance"></span>24/7 Emergency: +880 17 1234 5678</p>
+				</div>
+			</div>
+		</div>
+		<div class="map mt-5">
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.902442430136!2d90.3703!3d23.7466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b33cffc3fb%3A0xf1c9c8e8e8e8e8e8!2sDhanmondi%2C+Dhaka%2C+Bangladesh!5e0!3m2!1sen!2sbd!4v1234567890"
+				style="border:0" 
+				width="100%" 
+				height="450" 
+				allowfullscreen="" 
+				loading="lazy" 
+				referrerpolicy="no-referrer-when-downgrade"
+				title="denTallo Dental Clinic Location - Dhanmondi, Dhaka, Bangladesh">
+			</iframe>
+		</div>
+	</section>
+	<!-- //contact -->
+
+	<!-- footer -->
+	<footer class="py-5">
+		<div class="container py-sm-3">
+			<div class="row footer-grids">
+				<div class="col-lg-3 col-sm-6 mb-lg-0 mb-sm-5 mb-4">
+					<h4 class="mb-sm-4 mb-3"><span class="fa fa-stethoscope"></span>denTallo</h4>
+					<p class="mb-3">denTallo is dedicated to providing exceptional dental care with a focus on patient comfort, advanced technology, and personalized treatment.</p>
+					<h5>Trusted by <span>500+ People</span> </h5>
+				</div>
+				<div class="col-lg-3 col-sm-6 mb-lg-0 mb-sm-5 mb-4">
+					<h4 class="mb-sm-4 mb-3">Address Info</h4>
+					<p><span class="fa mr-2 fa-map-marker"></span>House 12, Road 5, Dhanmondi, Dhaka, Bangladesh</p>
+					<p class="phone py-2"><span class="fa mr-2 fa-phone"></span> +880 17 1234 5678 </p>
+					<p><span class="fa mr-2 fa-envelope"></span><a href="mailto:info@dentallo.com.bd">info@dentallo.com.bd</a></p>
+				</div>
+				<div class="col-lg-2 col-sm-6 mb-sm-0 mb-4">
+					<h4 class="mb-sm-4 mb-3">Quick Links</h4>
+					<ul>
+						<li><a href="#">Terms & Conditions</a></li>
+						<li class="my-2"><a href="#">Support Helpline</a></li>
+						<li><a href="#">Healthy Tips</a></li>
+						<li class="mt-2"><a href="#">Privacy Ploicy</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-4 col-sm-6">
+					<h4 class="mb-sm-4 mb-3">Subscribe Us</h4>
+					<p class="mb-3">Subscribe to our newsletter</p>
+					<form action="#" method="post" class="d-flex">
+						<input type="email" id="email" name="EMAIL" placeholder="Enter your email here" required="">
+						<button type="submit" class="btn">Subscribe</button>
+					</form>
+					<div class="icon-social mt-3">
+						<a href="#" class="button-footr">
+							<span class="fa mx-2 fa-facebook"></span>
+						</a>
+						<a href="#" class="button-footr">
+							<span class="fa mx-2 fa-twitter"></span>
+						</a>
+						<a href="#" class="button-footr">
+							<span class="fa mx-2 fa-dribbble"></span>
+						</a>
+						<a href="#" class="button-footr">
+							<span class="fa mx-2 fa-pinterest"></span>
+						</a>
+						<a href="#" class="button-footr">
+							<span class="fa mx-2 fa-google-plus"></span>
+						</a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- //footer -->
+
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container py-4">
+			<div class=" text-center">
+				<p>© 2022 Dental Hospital. All Rights Reserved | Design by Fahim Faisal </p>
+			</div>
+		</div>
+	</div>
+	<!-- //copyright -->
+
+	<!-- move top -->
+	<div class="move-top text-right">
+		<a href="#home" class="move-top">
+			<span class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
+		</a>
+	</div>
+	<!-- move top -->
+
+	<!-- contact Booking System JavaScript -->
+	<script>
+		// Global variables for booking system
+		let currentStep = 1;
+		let selectedService = null;
+		let selectedDoctor = null;
+		let selectedDate = null;
+		let selectedTime = null;
+		let currentMonth = new Date().getMonth();
+		let currentYear = new Date().getFullYear();
+
+		// Doctor availability data
+		const doctorAvailability = {
+			'dr-habibur': ['Monday', 'Wednesday', 'Friday'],
+			'dr-afroja': ['Tuesday', 'Thursday', 'Saturday'],
+			'dr-arifur': ['Monday', 'Tuesday', 'Thursday'],
+			'dr-samira': ['Wednesday', 'Friday', 'Saturday']
+		};
+
+		// Service pricing
+		const servicePricing = {
+			'checkup': 1000,
+			'whitening': 5000,
+			'rootcanal': 8000,
+			'emergency': 2500
+		};
+
+		// Initialize booking system
+		document.addEventListener('DOMContentLoaded', function() {
+			initializeBookingSystem();
+		});
+
+		function initializeBookingSystem() {
+			// Add event listeners for service selection
+			document.querySelectorAll('.service-card').forEach(card => {
+				card.addEventListener('click', function() {
+					selectService(this);
+				});
+			});
+
+			// Add event listeners for doctor selection
+			document.querySelectorAll('.doctor-card').forEach(card => {
+				card.addEventListener('click', function() {
+					selectDoctor(this);
+				});
+			});
+
+			// Initialize calendar
+			generateCalendar();
+		}
+
+		// Step navigation functions
+		function nextStep(step) {
+			if (validateCurrentStep()) {
+				hideStep(currentStep);
+				currentStep = step;
+				showStep(currentStep);
+				
+				// Special handling for step 4 (calendar)
+				if (step === 4) {
+					generateCalendar();
+				}
+				
+				// Generate summary for step 5
+				if (step === 5) {
+					generateSummary();
+				}
+			}
+		}
+
+		function prevStep(step) {
+			hideStep(currentStep);
+			currentStep = step;
+			showStep(currentStep);
+		}
+
+		function showStep(step) {
+			document.getElementById('step' + step).classList.add('active');
+		}
+
+		function hideStep(step) {
+			document.getElementById('step' + step).classList.remove('active');
+		}
+
+		// Form validation
+		function validateCurrentStep() {
+			switch(currentStep) {
+				case 1:
+					return validatePatientInfo();
+				case 2:
+					return selectedService !== null;
+				case 3:
+					return selectedDoctor !== null;
+				case 4:
+					return selectedDate !== null && selectedTime !== null;
+				default:
+					return true;
+			}
+		}
+
+		function validatePatientInfo() {
+			const fullName = document.getElementById('fullName').value.trim();
+			const email = document.getElementById('email').value.trim();
+			const phone = document.getElementById('phone').value.trim();
+			const dateOfBirth = document.getElementById('dateOfBirth').value;
+
+			if (!fullName || !email || !phone || !dateOfBirth) {
+				alert('Please fill in all required fields.');
+				return false;
+			}
+
+			// Email validation
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (!emailRegex.test(email)) {
+				alert('Please enter a valid email address.');
+				return false;
+			}
+
+			// Phone validation
+			const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+			if (!phoneRegex.test(phone)) {
+				alert('Please enter a valid phone number.');
+				return false;
+			}
+
+			return true;
+		}
+
+		// Service selection
+		function selectService(card) {
+			// Remove previous selection
+			document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+			
+			// Add selection to clicked card
+			card.classList.add('selected');
+			selectedService = card.dataset.service;
+		}
+
+		// Doctor selection
+		function selectDoctor(card) {
+			// Remove previous selection
+			document.querySelectorAll('.doctor-card').forEach(c => c.classList.remove('selected'));
+			
+			// Add selection to clicked card
+			card.classList.add('selected');
+			selectedDoctor = card.dataset.doctor;
+		}
+
+		// Calendar functions
+		function generateCalendar() {
+			const calendarGrid = document.getElementById('calendarGrid');
+			const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+							   'July', 'August', 'September', 'October', 'November', 'December'];
+			
+			// Update month display
+			document.getElementById('currentMonth').textContent = monthNames[currentMonth] + ' ' + currentYear;
+			
+			// Clear previous calendar
+			calendarGrid.innerHTML = '';
+			
+			// Add day headers
+			const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+			days.forEach(day => {
+				const dayHeader = document.createElement('div');
+				dayHeader.className = 'calendar-day header';
+				dayHeader.textContent = day;
+				dayHeader.style.fontWeight = 'bold';
+				dayHeader.style.backgroundColor = '#f8f9fa';
+				calendarGrid.appendChild(dayHeader);
+			});
+			
+			// Get first day of month and number of days
+			const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+			const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+			const today = new Date();
+			
+			// Add empty cells for days before first day of month
+			for (let i = 0; i < firstDay; i++) {
+				const emptyDay = document.createElement('div');
+				emptyDay.className = 'calendar-day empty';
+				calendarGrid.appendChild(emptyDay);
+			}
+			
+			// Add days of month
+			for (let day = 1; day <= daysInMonth; day++) {
+				const dayElement = document.createElement('div');
+				dayElement.className = 'calendar-day';
+				dayElement.textContent = day;
+				
+				const currentDate = new Date(currentYear, currentMonth, day);
+				
+				// Check if date is in the past
+				if (currentDate < today) {
+					dayElement.classList.add('disabled');
+				} else {
+					// Check if doctor is available on this day
+					if (selectedDoctor && isDoctorAvailable(currentDate)) {
+						dayElement.classList.add('available');
+						dayElement.addEventListener('click', () => selectDate(currentDate, dayElement));
+					}
+				}
+				
+				// Mark today
+				if (currentDate.toDateString() === today.toDateString()) {
+					dayElement.classList.add('today');
+				}
+				
+				calendarGrid.appendChild(dayElement);
+			}
+		}
+
+		function isDoctorAvailable(date) {
+			const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+			const dayName = dayNames[date.getDay()];
+			return doctorAvailability[selectedDoctor].includes(dayName);
+		}
+
+		function selectDate(date, element) {
+			// Remove previous selection
+			document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+			
+			// Add selection
+			element.classList.add('selected');
+			selectedDate = date;
+			
+			// Generate time slots for selected date
+			generateTimeSlots(date);
+		}
+
+		function generateTimeSlots(date) {
+			const timeSlotsContainer = document.getElementById('timeSlots');
+			timeSlotsContainer.innerHTML = '';
+			
+			const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+			const dayName = dayNames[date.getDay()];
+			
+			let timeSlots = [];
+			
+			// Weekend hours (Saturday, Sunday)
+			if (dayName === 'Saturday' || dayName === 'Sunday') {
+				timeSlots = [
+					'9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
+					'12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM',
+					'3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM'
+				];
+			} else {
+				// Weekday hours
+				timeSlots = [
+					'8:30 AM', '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
+					'12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM',
+					'3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM',
+					'7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM'
+				];
+			}
+			
+			timeSlots.forEach(time => {
+				const timeSlot = document.createElement('div');
+				timeSlot.className = 'time-slot';
+				timeSlot.textContent = time;
+				timeSlot.addEventListener('click', () => selectTime(time, timeSlot));
+				timeSlotsContainer.appendChild(timeSlot);
+			});
+		}
+
+		function selectTime(time, element) {
+			// Remove previous selection
+			document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('selected'));
+			
+			// Add selection
+			element.classList.add('selected');
+			selectedTime = time;
+		}
+
+		// Calendar navigation
+		function previousMonth() {
+			currentMonth--;
+			if (currentMonth < 0) {
+				currentMonth = 11;
+				currentYear--;
+			}
+			generateCalendar();
+		}
+
+		function nextMonth() {
+			currentMonth++;
+			if (currentMonth > 11) {
+				currentMonth = 0;
+				currentYear++;
+			}
+			generateCalendar();
+		}
+
+		// Generate contact summary
+		function generateSummary() {
+			const summaryContainer = document.getElementById('contactummary');
+			
+			const summaryHTML = `
+				<div class="summary-item">
+					<span class="summary-label">Patient Name:</span>
+					<span class="summary-value">${document.getElementById('fullName').value}</span>
+				</div>
+				<div class="summary-item">
+					<span class="summary-label">Service:</span>
+					<span class="summary-value">${selectedService}</span>
+				</div>
+				<div class="summary-item">
+					<span class="summary-label">Doctor:</span>
+					<span class="summary-value">${selectedDoctor}</span>
+				</div>
+				<div class="summary-item">
+					<span class="summary-label">Date:</span>
+					<span class="summary-value">${selectedDate.toLocaleDateString()}</span>
+				</div>
+				<div class="summary-item">
+					<span class="summary-label">Time:</span>
+					<span class="summary-value">${selectedTime}</span>
+				</div>
+			`;
+			
+			summaryContainer.innerHTML = summaryHTML;
+		}
+
+		// Confirm contact
+		function confirmcontact() {
+			// Show loading state
+			const confirmBtn = document.querySelector('.btn-success');
+			const originalText = confirmBtn.innerHTML;
+			confirmBtn.innerHTML = '<span class="fa fa-spinner fa-spin"></span> Confirming...';
+			confirmBtn.disabled = true;
+			
+			// Simulate processing time
+			setTimeout(() => {
+				// Hide current step and show success
+				hideStep(currentStep);
+				showStep('successStep');
+				
+				// Populate final contact details
+				const finalDetails = document.getElementById('finalcontactDetails');
+				finalDetails.innerHTML = `
+					<div class="summary-item">
+						<span class="summary-label">contact ID:</span>
+						<span class="summary-value">${generatecontactId()}</span>
+					</div>
+					<div class="summary-item">
+						<span class="summary-label">Patient Name:</span>
+						<span class="summary-value">${document.getElementById('fullName').value}</span>
+					</div>
+					<div class="summary-item">
+						<span class="summary-label">Service:</span>
+						<span class="summary-value">${selectedService}</span>
+					</div>
+					<div class="summary-item">
+						<span class="summary-label">Doctor:</span>
+						<span class="summary-value">${selectedDoctor}</span>
+					</div>
+					<div class="summary-item">
+						<span class="summary-label">Date:</span>
+						<span class="summary-value">${selectedDate.toLocaleDateString()}</span>
+					</div>
+					<div class="summary-item">
+						<span class="summary-label">Time:</span>
+						<span class="summary-value">${selectedTime}</span>
+					</div>
+				`;
+				
+				// Reset button
+				confirmBtn.innerHTML = originalText;
+				confirmBtn.disabled = false;
+			}, 2000);
+		}
+
+		function generatecontactId() {
+			const timestamp = new Date().getTime();
+			const random = Math.floor(Math.random() * 1000);
+			return `APT-${timestamp}-${random}`;
+		}
+
+		// Reset booking system
+		function resetBooking() {
+			// Reset all selections
+			selectedService = null;
+			selectedDoctor = null;
+			selectedDate = null;
+			selectedTime = null;
+			currentStep = 1;
+			
+			// Reset form
+			document.getElementById('patientInfoForm').reset();
+			
+			// Remove all selections
+			document.querySelectorAll('.service-card, .doctor-card').forEach(card => {
+				card.classList.remove('selected');
+			});
+			
+			// Hide all steps and show first step
+			document.querySelectorAll('.booking-step').forEach(step => {
+				step.classList.remove('active');
+			});
+			showStep(1);
+		}
+
+		// PDF Generation Functions
+		function downloadcontactPDF() {
+			const { jsPDF } = window.jspdf;
+			const doc = new jsPDF();
+			
+			// Get contact data
+			const contactData = getcontactData();
+			
+			// Add header
+			addHeader(doc);
+			
+			// Add patient information
+			addPatientInfo(doc, contactData);
+			
+			// Add contact details
+			addcontactDetails(doc, contactData);
+			
+			// Add clinic information
+			addClinicInfo(doc);
+			
+			// Add footer
+			addFooter(doc);
+			
+			// Generate filename
+			const filename = `contact_${contactData.patientName.replace(/\s+/g, '_')}_${contactData.date.replace(/\//g, '-')}.pdf`;
+			
+			// Save PDF
+			doc.save(filename);
+		}
+
+		function getcontactData() {
+			return {
+				patientName: document.getElementById('fullName').value,
+				email: document.getElementById('email').value,
+				phone: document.getElementById('phone').value,
+				dateOfBirth: document.getElementById('dateOfBirth').value,
+				medicalHistory: document.getElementById('medicalHistory').value,
+				service: selectedService,
+				doctor: selectedDoctor,
+				date: selectedDate,
+				time: selectedTime,
+				contactId: generatecontactId()
+			};
+		}
+
+		function addHeader(doc) {
+			// Add logo/header
+			doc.setFontSize(24);
+			doc.setTextColor(0, 123, 255);
+			doc.text('denTallo Dental Clinic', 105, 20, { align: 'center' });
+			
+			doc.setFontSize(14);
+			doc.setTextColor(100);
+			doc.text('contact Confirmation', 105, 30, { align: 'center' });
+			
+			// Add line
+			doc.setDrawColor(0, 123, 255);
+			doc.setLineWidth(0.5);
+			doc.line(20, 35, 190, 35);
+		}
+
+		function addPatientInfo(doc, data) {
+			doc.setFontSize(16);
+			doc.setTextColor(0);
+			doc.text('Patient Information', 20, 50);
+			
+			doc.setFontSize(12);
+			doc.setTextColor(100);
+			
+			const patientInfo = [
+				['Name:', data.patientName],
+				['Email:', data.email],
+				['Phone:', data.phone],
+				['Date of Birth:', data.dateOfBirth],
+				['contact ID:', data.contactId]
+			];
+			
+			doc.autoTable({
+				startY: 55,
+				head: [],
+				body: patientInfo,
+				theme: 'plain',
+				styles: {
+					fontSize: 10,
+					cellPadding: 3
+				},
+				columnStyles: {
+					0: { fontStyle: 'bold', cellWidth: 40 },
+					1: { cellWidth: 60 }
+				}
+			});
+		}
+
+		function addcontactDetails(doc, data) {
+			doc.setFontSize(16);
+			doc.setTextColor(0);
+			doc.text('contact Details', 20, 120);
+			
+			doc.setFontSize(12);
+			doc.setTextColor(100);
+			
+			const contactInfo = [
+				['Service:', data.service],
+				['Doctor:', data.doctor],
+				['Date:', data.date],
+				['Time:', data.time]
+			];
+			
+			doc.autoTable({
+				startY: 125,
+				head: [],
+				body: contactInfo,
+				theme: 'plain',
+				styles: {
+					fontSize: 10,
+					cellPadding: 3
+				},
+				columnStyles: {
+					0: { fontStyle: 'bold', cellWidth: 40 },
+					1: { cellWidth: 60 }
+				}
+			});
+			
+			// Add medical history if provided
+			if (data.medicalHistory && data.medicalHistory.trim() !== '') {
+				doc.setFontSize(12);
+				doc.setTextColor(0);
+				doc.text('Medical History:', 20, 170);
+				
+				doc.setFontSize(10);
+				doc.setTextColor(100);
+				const splitText = doc.splitTextToSize(data.medicalHistory, 170);
+				doc.text(splitText, 20, 180);
+			}
+		}
+
+		function addClinicInfo(doc) {
+			doc.setFontSize(16);
+			doc.setTextColor(0);
+			doc.text('Clinic Information', 20, 220);
+			
+			doc.setFontSize(10);
+			doc.setTextColor(100);
+			
+			const clinicInfo = [
+				['Address:', 'House 12, Road 5, Dhanmondi, Dhaka, Bangladesh'],
+				['Phone:', '+880 17 1234 5678'],
+				['Email:', 'info@dentallo.com.bd'],
+				['Website:', 'www.dentallo.com.bd']
+			];
+			
+			doc.autoTable({
+				startY: 225,
+				head: [],
+				body: clinicInfo,
+				theme: 'plain',
+				styles: {
+					fontSize: 9,
+					cellPadding: 3
+				},
+				columnStyles: {
+					0: { fontStyle: 'bold', cellWidth: 30 },
+					1: { cellWidth: 70 }
+				}
+			});
+			
+			// Add office hours
+			doc.setFontSize(12);
+			doc.setTextColor(0);
+			doc.text('Office Hours:', 20, 260);
+			
+			doc.setFontSize(10);
+			doc.setTextColor(100);
+			doc.text('Monday - Friday: 8:30 AM - 9:30 PM', 20, 270);
+			doc.text('Saturday - Sunday: 9:00 AM - 6:00 PM', 20, 280);
+		}
+
+		function addFooter(doc) {
+			// Add footer line
+			doc.setDrawColor(0, 123, 255);
+			doc.setLineWidth(0.5);
+			doc.line(20, 270, 190, 270);
+			
+			// Add footer text
+			doc.setFontSize(8);
+			doc.setTextColor(100);
+			doc.text('Thank you for choosing denTallo Dental Clinic. Please arrive 10 minutes before your contact time.', 105, 280, { align: 'center' });
+			doc.text('For any questions or to reschedule, please call us at +880 17 1234 5678', 105, 285, { align: 'center' });
+			
+			// Add page number
+			doc.text(`Generated on: ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}`, 105, 290, { align: 'center' });
+		}
+	</script>
+
+</body>
+
+</html>

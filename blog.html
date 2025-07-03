@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Dental Health Blog</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8" />
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
+	<!-- Firebase App (the core Firebase SDK) -->
+	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+	<!-- Firebase Analytics -->
+	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+	<script>
+	  // Your web app's Firebase configuration
+	  const firebaseConfig = {
+	    apiKey: "AIzaSyD_FYW1O-iFXXTfd4fgYmLi6G1lhAaK_B8",
+	    authDomain: "dentello-bf49a.firebaseapp.com",
+	    projectId: "dentello-bf49a",
+	    storageBucket: "dentello-bf49a.appspot.com",
+	    messagingSenderId: "209346364277",
+	    appId: "1:209346364277:web:a0cd05825d193bb85d093c",
+	    measurementId: "G-DERY2TQFE4"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	  if (firebase.analytics) {
+	    firebase.analytics();
+	  }
+	</script>
+	<!-- End Firebase -->
+</head>
+
+<body>
+	<header class="py-3">
+		<div class="container">
+			<div id="logo">
+				<h1><a href="index.html"><span class="fa fa-stethoscope"></span>denTallo</a></h1>
+			</div>
+			<nav class="d-lg-flex">
+				<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+				<input type="checkbox" id="drop" />
+				<ul class="menu mt-2 ml-auto">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About Us</a></li>
+					<li><a href="services.html">Services</a></li>
+					<li><a href="gallery.html">Gallery</a></li>
+					<li class="active"><a href="blog.html">Blog</a></li>
+					<li><a href="contact.html">contact </a></li>
+				</ul>
+				<div class="login-icon ml-2">
+					<a class="user" href="login.html"> Login</a>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	<div class="innerpage-banner" id="home">
+		<div class="inner-page-layer"></div>
+	</div>
+
+	<section class="blog py-5">
+		<div class="container py-md-3">
+			<h2 class="heading text-center mb-sm-5 mb-4">Dental Blogs</h2>
+			<div class="row blog-grids head">
+				<div class="col-lg-7 mb-lg-5 blog-img1">
+					<img src="images/blog1.jpg" alt="Brushing Tips" class="img-fluid" />
+					<a href="single.html">Blog #1</a>
+				</div>
+				<div class="col-lg-5 mb-lg-5 mb-4">
+					<h5>May 10, 2025</h5>
+					<h4 class="my-3">Researchers Develop New Biomaterial for Tooth Regeneration</h4>
+					<p class="my-3">A team of scientists has announced a new biomaterial that could help regenerate damaged tooth tissue, offering hope for millions suffering from tooth decay and injury. The innovation is expected to revolutionize restorative dentistry in the coming years.</p>
+					<a href="single.html" class="btn-banner"> View Post </a>
+				</div>
+				<div class="col-lg-5 mb-lg-5 mb-4">
+					<h5>May 7, 2025</h5>
+					<h4 class="my-3">AI Technology Now Assists in Early Detection of Oral Cancer</h4>
+					<p class="my-3">Dental clinics worldwide are adopting artificial intelligence tools to help detect oral cancer at earlier stages. This technology analyzes patient scans and highlights potential areas of concern, improving outcomes and saving lives.</p>
+					<a href="single.html" class="btn-banner"> View Post </a>
+				</div>
+				<div class="col-lg-7 mb-5 blog-img2">
+					<img src="images/blog2.jpg" alt="Natural Whitening Foods" class="img-fluid" />
+					<a href="single.html">Blog #2</a>
+				</div>
+				<div class="col-lg-7 mb-lg-5 blog-img1">
+					<img src="images/blog3.jpg" alt="Flossing Importance" class="img-fluid" />
+					<a href="single.html">Blog #3</a>
+				</div>
+				<div class="col-lg-5 mb-lg-5 mb-4">
+					<h5>May 4, 2025</h5>
+					<h4 class="my-3">Flossing: Why Skipping It Could Hurt More Than You Think</h4>
+					<p class="my-3">Many skip flossing, thinking brushing is enough. But did you know flossing reaches up to 40% of your tooth surfaces? Find out how this small habit can prevent major problems.</p>
+					<a href="single.html" class="btn-banner"> View Post </a>
+				</div>
+				<div class="col-lg-5 mb-lg-5 mb-4">
+					<h5>May 1, 2025</h5>
+					<h4 class="my-3">How Stress Affects Your Oral Health</h4>
+					<p class="my-3">Stress can trigger jaw clenching, teeth grinding, and even gum disease. Learn how mental health anddenTallo are closely linked—and what to do about it.</p>
+					<a href="single.html" class="btn-banner"> View Post </a>
+				</div>
+				<div class="col-lg-7 blog-img2">
+					<img src="images/blog4.jpg" alt="Stress and Oral Health" class="img-fluid" />
+					<a href="single.html">Blog #4</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="py-5">
+		<div class="container py-sm-3">
+			<div class="row footer-grids">
+				<div class="col-lg-3 col-sm-6 mb-lg-0 mb-sm-5 mb-4">
+					<h4 class="mb-sm-4 mb-3"><span class="fa fa-stethoscope"></span>denTallo</h4>
+					<p class="mb-3">denTallo is dedicated to providing exceptional dental care with a focus on patient comfort, advanced technology, and personalized treatment.</p>
+					<h5>Trusted by <span>500+ People</span></h5>
+				</div>
+				<div class="col-lg-3 col-sm-6 mb-lg-0 mb-sm-5 mb-4">
+					<h4 class="mb-sm-4 mb-3">Address Info</h4>
+					<p><span class="fa mr-2 fa-map-marker"></span>House 12, Road 5, Dhanmondi, Dhaka, Bangladesh</p>
+					<p class="phone py-2"><span class="fa mr-2 fa-phone"></span> +880 17 1234 5678</p>
+					<p><span class="fa mr-2 fa-envelope"></span><a href="mailto:info@dentallo.com.bd">info@dentallo.com.bd</a></p>
+				</div>
+				<div class="col-lg-2 col-sm-6 mb-sm-0 mb-4">
+					<h4 class="mb-sm-4 mb-3">Quick Links</h4>
+					<ul>
+						<li><a href="#">Terms & Conditions</a></li>
+						<li class="my-2"><a href="#">Support Helpline</a></li>
+						<li><a href="#">Healthy Tips</a></li>
+						<li class="mt-2"><a href="#">Privacy Policy</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-4 col-sm-6">
+					<h4 class="mb-sm-4 mb-3">Subscribe Us</h4>
+					<p class="mb-3">Subscribe to our newsletter</p>
+					<form action="#" method="post" class="d-flex">
+						<input type="email" name="EMAIL" placeholder="Enter your email here" required="">
+						<button type="submit" class="btn">Subscribe</button>
+					</form>
+					<div class="icon-social mt-3">
+						<a href="#" class="button-footr"><span class="fa mx-2 fa-facebook"></span></a>
+						<a href="#" class="button-footr"><span class="fa mx-2 fa-twitter"></span></a>
+						<a href="#" class="button-footr"><span class="fa mx-2 fa-dribbble"></span></a>
+						<a href="#" class="button-footr"><span class="fa mx-2 fa-pinterest"></span></a>
+						<a href="#" class="button-footr"><span class="fa mx-2 fa-google-plus"></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<div class="copyright">
+		<div class="container py-4">
+			<div class="text-center">
+				<p>© 2022 Dental Hospital. All Rights Reserved | Design by Fahim Faisal </p>
+			</div>
+		</div>
+	</div>
+
+	<div class="move-top text-right">
+		<a href="#home" class="move-top">
+			<span class="fa fa-angle-up mb-3" aria-hidden="true"></span>
+		</a>
+	</div>
+</body>
+</html>

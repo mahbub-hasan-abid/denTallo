@@ -1,0 +1,164 @@
+/* Performance Optimization Styles for denTallo */
+
+/* Critical rendering path optimizations */
+* {
+    box-sizing: border-box;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Optimize images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Lazy loading placeholder */
+img[data-src] {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+img[data-src].loaded {
+    opacity: 1;
+}
+
+/* Optimize fonts */
+.fonts-loaded {
+    font-display: swap;
+}
+
+/* Loading indicators */
+.loading {
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Optimize page transitions */
+.page-transition {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.page-transition.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optimize scroll performance */
+.smooth-scroll {
+    scroll-behavior: smooth;
+}
+
+/* Optimize button interactions */
+.btn {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Optimize modal performance */
+.modal {
+    will-change: transform, opacity;
+}
+
+/* Optimize chatbot performance */
+.chatbot-container {
+    contain: layout style paint;
+}
+
+/* Optimize form performance */
+.form-control {
+    transform: translateZ(0);
+}
+
+/* Optimize navigation performance */
+.nav-link {
+    transform: translateZ(0);
+}
+
+/* Optimize image loading */
+.image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Optimize background gradients */
+.gradient-bg {
+    background-attachment: scroll;
+}
+
+/* Optimize text rendering */
+body {
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize focus indicators */
+*:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Optimize hover states */
+@media (hover: hover) {
+    .hover-effect:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* Optimize for mobile */
+@media (max-width: 768px) {
+    .mobile-optimized {
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* Optimize print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+} 
