@@ -927,6 +927,8 @@
                         });
                         const result = await response.json();
                         if (result.success) {
+                            // Hide the register button
+                            registrationBtn.style.display = 'none';
                             // Show OTP input inline
                             showOtpInputInline();
                             showAlert('registerAlert', 'OTP sent to your email. Please enter it below.', 'success');
